@@ -937,6 +937,259 @@
       background: var(--charcoal);
     }
 
+    /* Step indicator */
+    .form-steps {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin-bottom: 2.5rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .form-step {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      opacity: 0.35;
+      transition: opacity 0.4s;
+      white-space: nowrap;
+    }
+
+    .form-step.active {
+      opacity: 1;
+    }
+
+    .form-step.done {
+      opacity: 0.7;
+    }
+
+    .step-dot {
+      width: 28px;
+      height: 28px;
+      border: 1px solid rgba(201, 168, 76, 0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      color: rgba(250, 247, 242, 0.6);
+      transition: all 0.4s;
+      flex-shrink: 0;
+    }
+
+    .form-step.active .step-dot {
+      border-color: var(--gold);
+      background: var(--gold);
+      color: var(--black);
+      font-weight: 500;
+    }
+
+    .form-step.done .step-dot {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .form-step span {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(250, 247, 242, 0.6);
+    }
+
+    .form-step.active span {
+      color: var(--cream);
+    }
+
+    .step-connector {
+      flex: 1;
+      height: 1px;
+      background: rgba(201, 168, 76, 0.2);
+      margin: 0 0.8rem;
+    }
+
+    /* Form pages */
+    .form-page {
+      display: none;
+    }
+
+    .form-page.active {
+      display: block;
+      animation: fadeSlide 0.4s ease;
+    }
+
+    @keyframes fadeSlide {
+      from {
+        opacity: 0;
+        transform: translateX(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* Validation */
+    .req {
+      color: var(--gold);
+      font-size: 0.7rem;
+    }
+
+    .field-error {
+      display: block;
+      font-size: 0.75rem;
+      color: #e07070;
+      margin-top: 0.3rem;
+      min-height: 1rem;
+    }
+
+    input.invalid,
+    select.invalid,
+    textarea.invalid {
+      border-color: #e07070 !important;
+    }
+
+    input.valid,
+    select.valid {
+      border-color: rgba(100, 200, 100, 0.5) !important;
+    }
+
+    /* Nav buttons */
+    .form-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1.5rem;
+      gap: 1rem;
+    }
+
+    .btn-next {
+      background: var(--gold);
+      color: var(--black);
+      border: none;
+      padding: 0.9rem 2rem;
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s;
+      margin-left: auto;
+    }
+
+    .btn-next:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
+    .btn-back {
+      background: transparent;
+      color: rgba(250, 247, 242, 0.5);
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      padding: 0.9rem 1.5rem;
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .btn-back:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    /* Review box */
+    .review-box {
+      background: rgba(201, 168, 76, 0.05);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem 2rem;
+    }
+
+    .review-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .review-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.6;
+    }
+
+    .review-value {
+      font-size: 0.9rem;
+      color: var(--cream);
+      font-weight: 300;
+    }
+
+    .review-item.full {
+      grid-column: span 2;
+    }
+
+    /* Success state */
+    .success-state {
+      text-align: center;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .success-icon {
+      font-size: 2.5rem;
+      color: var(--gold);
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      50% {
+        transform: scale(1.15);
+        opacity: 0.7;
+      }
+    }
+
+    .success-state h3 {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--cream);
+    }
+
+    .success-state p {
+      font-size: 0.95rem;
+      color: rgba(250, 247, 242, 0.6);
+      line-height: 1.8;
+      max-width: 380px;
+    }
+
+    .success-state strong {
+      color: var(--cream);
+      font-weight: 400;
+    }
+
+    .success-sub {
+      font-size: 0.8rem !important;
+      color: rgba(250, 247, 242, 0.3) !important;
+    }
+
     .order-inner {
       max-width: 1100px;
       margin: 0 auto;
@@ -1530,17 +1783,17 @@
 
   <!-- SAMPLES -->
   <section class="samples-section" id="samples">
-    <center>
-      <div class="samples-inner">
-        <div class="samples-header fade-up">
-          <p class="section-eyebrow">See It To Believe It</p>
-          <h2 class="section-title">Sample <em>Videos</em></h2>
-          <div class="divider"></div>
-          <p class="samples-sub">Watch how a personalized video feels compared to any ordinary invite. Each one below is
-            a
-            real sample — notice how the guest's name makes all the difference.</p>
-        </div>
+    <div class="samples-inner">
+      <div class="samples-header fade-up">
+        <p class="section-eyebrow">See It To Believe It</p>
+        <h2 class="section-title">Sample <em>Videos</em></h2>
+        <div class="divider"></div>
+        <p class="samples-sub">Watch how a personalized video feels compared to any ordinary invite. Each one below is a
+          real sample — notice how the guest's name makes all the difference.</p>
+      </div>
 
+
+      <center>
         <div class="samples-grid">
 
           <!-- WEDDING -->
@@ -1566,7 +1819,7 @@
             </div>
             <div class="sample-info">
               <h3>Wedding Invitation</h3>
-              <p>"Dear <em>Priya</em>, Rohan &amp; Sneha joyfully invite you to share in the celebration of their
+              <p>"Dear <em>Riddhima</em>, Punit &amp; Sneha joyfully invite you to share in the celebration of their
                 union…"
               </p>
             </div>
@@ -1595,9 +1848,8 @@
             </div>
             <div class="sample-info">
               <h3>College Admission</h3>
-              <p>"Congratulations <em>Arjun</em>! On behalf of the entire faculty, we are delighted to welcome you to
-                the
-                Class of 2025…"</p>
+              <p>"Congratulations <em>Jill</em>! On behalf of the entire faculty, we are delighted to welcome you to the
+                Class of 2026…"</p>
             </div>
           </div>
 
@@ -1610,7 +1862,7 @@
             <div class="sample-video-wrap">
               <!-- REPLACE src WITH YOUR ACTUAL VIDEO FILE PATH e.g. src="videos/hotel-sample.mp4" -->
               <video controls poster="" preload="none">
-                <source src="assets/white_wedding.mp4" type="video/mp4">
+                <source src="YOUR-HOTEL-VIDEO.mp4" type="video/mp4">
               </video>
               <div class="sample-overlay" onclick="playVideo(this)">
                 <div class="play-btn-large">
@@ -1630,14 +1882,13 @@
           </div>
 
         </div>
-
-        <div class="samples-cta fade-up">
-          <p>Like what you see? <strong>Your guests will feel this.</strong></p>
-          <a href="#order" class="btn-primary">Order Your Personalized Videos</a>
-        </div>
+      </center>
+      <div class="samples-cta fade-up">
+        <p>Like what you see? <strong>Your guests will feel this.</strong></p>
+        <a href="#order" class="btn-primary">Order Your Personalized Videos</a>
       </div>
+    </div>
   </section>
-  </center>
 
   <!-- USE CASES -->
   <section class="usecases" id="occasions">
@@ -1785,8 +2036,8 @@
           <div class="testi-author">
             <div class="testi-avatar">P</div>
             <div>
-              <div class="testi-name">Prof. Priya Nair</div>
-              <div class="testi-role">Admissions Director, Pune</div>
+              <div class="testi-name">Kay Eilers</div>
+              <div class="testi-role">Admissions Director, University of Wisconsin-Milwaukee</div>
             </div>
           </div>
         </div>
@@ -1814,11 +2065,11 @@
           <div class="price-period">Up to 25 personalized videos</div>
           <div class="price-divider"></div>
           <ul class="price-features">
-            <li class="price-feature">Guest name personalization</li>
+            <li class="price-feature">Guest name personalization + message personalization</li>
             <li class="price-feature">1 video template design</li>
             <li class="price-feature">Private shareable links</li>
             <li class="price-feature">48-hour delivery</li>
-            <li class="price-feature">WhatsApp-ready format</li>
+
           </ul>
           <a href="#order" class="btn-price">Get Started</a>
         </div>
@@ -1834,8 +2085,8 @@
           <ul class="price-features">
             <li class="price-feature">Full name + message personalization</li>
             <li class="price-feature">2 custom template designs</li>
-            <li class="price-feature">Priority 24-hour delivery</li>
-            <li class="price-feature">Branded intro / outro</li>
+            <li class="price-feature">Priority 36-hour delivery</li>
+
             <li class="price-feature">Dedicated account manager</li>
             <li class="price-feature">1 revision round included</li>
           </ul>
@@ -1870,7 +2121,6 @@
         <p class="section-eyebrow">Start Your Order</p>
         <h2 class="section-title">Let's Create Something <em>Beautiful</em></h2>
         <div class="divider"></div>
-
         <ul class="order-perks">
           <li>Tell us your occasion and we'll recommend the perfect format</li>
           <li>No design experience needed — we handle everything</li>
@@ -1878,63 +2128,145 @@
           <li>Fully confidential — your guest list is secure with us</li>
           <li>Served clients across India and internationally</li>
         </ul>
-
         <div class="contact-strip">
           <div style="font-size:1.5rem;opacity:0.7">📱</div>
-          <p>Prefer to talk first? Message us on<br><strong>WhatsApp: +91 XXXXX XXXXX</strong></p>
+          <p>Prefer to talk first? Message us on<br><a href="mailto:contact@videoevite.com"
+              target="_blank"><strong>contact@videoevite.com</strong></a></p>
         </div>
       </div>
 
       <div class="form-card fade-up">
-        <h3 class="form-title">Request Your Free Sample</h3>
 
-        <form onsubmit="handleSubmit(event)">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="fname">Your Name</label>
-              <input type="text" id="fname" placeholder="Anjali Kapoor" required>
+        <!-- STEP INDICATOR -->
+        <div class="form-steps">
+          <div class="form-step active" data-step="1">
+            <div class="step-dot">1</div><span>Your Details</span>
+          </div>
+          <div class="step-connector"></div>
+          <div class="form-step" data-step="2">
+            <div class="step-dot">2</div><span>Event Info</span>
+          </div>
+          <div class="step-connector"></div>
+          <div class="form-step" data-step="3">
+            <div class="step-dot">3</div><span>Confirm</span>
+          </div>
+        </div>
+
+        <form id="orderForm" novalidate>
+
+          <!-- STEP 1 -->
+          <div class="form-page active" id="page1">
+            <h3 class="form-title">Tell us about yourself</h3>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fname">Your Name <span class="req">*</span></label>
+                <input type="text" id="fname" placeholder="Anjali Kapoor" autocomplete="name">
+                <span class="field-error" id="err-fname"></span>
+              </div>
+              <div class="form-group">
+                <label for="phone">WhatsApp Number <span class="req">*</span></label>
+                <input type="tel" id="phone" placeholder="+91 98765 43210" autocomplete="tel">
+                <span class="field-error" id="err-phone"></span>
+              </div>
             </div>
             <div class="form-group">
-              <label for="phone">Phone / WhatsApp</label>
-              <input type="tel" id="phone" placeholder="+91 98765 43210" required>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" placeholder="you@email.com">
-          </div>
-
-          <div class="form-group">
-            <label for="occasion">Occasion Type</label>
-            <select id="occasion" required>
-              <option value="" disabled selected>Select your occasion</option>
-              <option>Wedding Invitation</option>
-              <option>Luxury Hotel Welcome</option>
-              <option>College Admissions</option>
-              <option>Corporate / Gala Event</option>
-              <option>Birthday Celebration</option>
-              <option>Other</option>
-            </select>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="guests">Approx. Guest Count</label>
-              <input type="text" id="guests" placeholder="e.g. 150 guests">
+              <label for="email">Email Address <span class="req">*</span></label>
+              <input type="email" id="email" placeholder="you@email.com" autocomplete="email">
+              <span class="field-error" id="err-email"></span>
             </div>
             <div class="form-group">
-              <label for="date">Event Date</label>
-              <input type="text" id="date" placeholder="e.g. Dec 2025">
+              <label for="city">Your City</label>
+              <input type="text" id="city" placeholder="Mumbai, Delhi, Bangalore…">
+            </div>
+            <div class="form-nav">
+              <span></span>
+              <button type="button" class="btn-next" onclick="goToStep(2)">Next: Event Info →</button>
             </div>
           </div>
 
-          <div class="form-group full">
-            <label for="message">Anything you'd like us to know</label>
-            <textarea id="message" placeholder="Tell us your vision, theme, or any special requests..."></textarea>
+          <!-- STEP 2 -->
+          <div class="form-page" id="page2">
+            <h3 class="form-title">Tell us about your event</h3>
+            <div class="form-group">
+              <label for="occasion">Occasion Type <span class="req">*</span></label>
+              <select id="occasion">
+                <option value="" disabled selected>Select your occasion</option>
+                <option>Wedding Invitation</option>
+                <option>Luxury Hotel Welcome</option>
+                <option>College Admissions</option>
+                <option>Corporate / Gala Event</option>
+                <option>Birthday Celebration</option>
+                <option>Other</option>
+              </select>
+              <span class="field-error" id="err-occasion"></span>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="guests">Approx. Guest Count</label>
+                <input type="text" id="guests" placeholder="e.g. 150 guests">
+              </div>
+              <div class="form-group">
+                <label for="edate">Event Date</label>
+                <input type="text" id="edate" placeholder="e.g. Dec 2025">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="budget">Budget Range</label>
+              <select id="budget">
+                <option value="" disabled selected>Select approximate budget</option>
+                <option>Under ₹5,000</option>
+                <option>₹5,000 – ₹15,000</option>
+                <option>₹15,000 – ₹30,000</option>
+                <option>₹30,000+</option>
+                <option>Let's discuss</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Vision &amp; Special Requests</label>
+              <textarea id="message"
+                placeholder="Tell us your theme, colour palette, any special personal touches…"></textarea>
+            </div>
+            <div class="form-nav">
+              <button type="button" class="btn-back" onclick="goToStep(1)">← Back</button>
+              <button type="button" class="btn-next" onclick="goToStep(3)">Review &amp; Confirm →</button>
+            </div>
           </div>
 
-          <button type="submit" class="form-submit">Send My Request →</button>
+          <!-- STEP 3: REVIEW -->
+          <div class="form-page" id="page3">
+            <h3 class="form-title">Review your request</h3>
+            <div class="review-box" id="reviewBox"></div>
+            <div class="form-group" style="margin-top:1.5rem">
+              <label
+                style="display:flex;align-items:flex-start;gap:0.7rem;cursor:pointer;text-transform:none;letter-spacing:0;font-size:0.85rem;color:rgba(250,247,242,0.6)">
+                <input type="checkbox" id="consent"
+                  style="width:16px;height:16px;min-width:16px;margin-top:2px;accent-color:#C9A84C">
+                I agree to be contacted by VideoEvite regarding my request. My information is kept confidential.
+              </label>
+              <span class="field-error" id="err-consent"></span>
+            </div>
+            <div class="form-nav">
+              <button type="button" class="btn-back" onclick="goToStep(2)">← Edit</button>
+              <button type="submit" class="form-submit" id="submitBtn">
+                <span id="submitText">Send My Request ✦</span>
+                <span id="submitSpinner" style="display:none">Sending…</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- SUCCESS STATE -->
+          <div class="form-page" id="pageSuccess">
+            <div class="success-state">
+              <div class="success-icon">✦</div>
+              <h3>Request Received!</h3>
+              <p>Thank you, <strong id="successName"></strong>. A confirmation has been sent to your email. Our team
+                will reach out within <strong>24 hours</strong>.</p>
+              <p class="success-sub">Check your spam folder if you don't see the email shortly.</p>
+              <a href="#order" class="btn-primary" style="margin-top:1.5rem;display:inline-block"
+                onclick="resetForm(event)">Submit Another Request</a>
+            </div>
+          </div>
+
         </form>
       </div>
     </div>
@@ -1973,72 +2305,200 @@
       <div class="footer-col">
         <h4>Connect</h4>
         <ul>
-          <li><a href="#">Instagram</a></li>
+          <li><a href="https://www.instagram.com/videoevite/">Instagram</a></li>
           <li><a href="#">YouTube</a></li>
           <li><a href="#">WhatsApp</a></li>
-          <li><a href="#">contact@videoevite.com</a></li>
+          <li><a href="mailto:contact@videoevite.com">contact@videoevite.com</a></li>
         </ul>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <p>© 2025 VideoEvite. All rights reserved.</p>
+      <p>2026 VideoEvite.</p>
       <p style="color:rgba(250,247,242,0.2)">Crafted with care for unforgettable moments.</p>
     </div>
   </footer>
 
   <!-- WhatsApp Float Button -->
-  <a href="https://wa.me/91XXXXXXXXXX" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
+  <!-- <a href="https://wa.me/91XXXXXXXXXX" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
     <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
       <path
         d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
     </svg>
-  </a>
+  </a> -->
+
+  <!-- EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
   <script>
-    // Play video on overlay click
+
+    const EMAILJS_PUBLIC_KEY = "W_64Di0zfMncoFIJT";
+    const EMAILJS_SERVICE_ID = "service_v3nfbco";
+    const EMAILJS_TEMPLATE_CUSTOMER = "template_tgcc71u";
+    const EMAILJS_TEMPLATE_OWNER = "template_tgcc71u";
+
+    emailjs.init(EMAILJS_PUBLIC_KEY);
+
+    // ── VIDEO OVERLAY ──
     function playVideo(overlay) {
       const video = overlay.previousElementSibling;
       overlay.classList.add('hidden');
       video.play();
     }
-
-    // Show overlay again if video is paused
     document.querySelectorAll('.sample-video-wrap video').forEach(video => {
       video.addEventListener('pause', () => {
         const overlay = video.nextElementSibling;
         if (overlay) overlay.classList.remove('hidden');
       });
     });
+
+    // ── STICKY NAV ──
     window.addEventListener('scroll', () => {
       document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 50);
     });
 
-    // Intersection Observer for animations
+    // ── SCROLL ANIMATIONS ──
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
     }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
-
     document.querySelectorAll('.fade-up, .step').forEach(el => observer.observe(el));
+    document.querySelectorAll('.step').forEach((step, i) => { step.style.transitionDelay = `${i * 0.12}s`; });
 
-    // Stagger steps
-    document.querySelectorAll('.step').forEach((step, i) => {
-      step.style.transitionDelay = `${i * 0.12}s`;
+    // ── MULTI-STEP FORM ──
+    let currentStep = 1;
+
+    function validate(step) {
+      let ok = true;
+      const clearErr = id => { const el = document.getElementById(id); if (el) el.textContent = ''; };
+      const setErr = (id, msg) => { const el = document.getElementById(id); if (el) el.textContent = msg; };
+      const markField = (id, valid) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.classList.toggle('invalid', !valid);
+        el.classList.toggle('valid', valid);
+      };
+      if (step === 1) {
+        clearErr('err-fname'); clearErr('err-phone'); clearErr('err-email');
+        const name = document.getElementById('fname').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const email = document.getElementById('email').value.trim();
+        if (!name) { setErr('err-fname', 'Please enter your name.'); markField('fname', false); ok = false; } else markField('fname', true);
+        if (!phone) { setErr('err-phone', 'Please enter your WhatsApp number.'); markField('phone', false); ok = false; } else markField('phone', true);
+        if (!email || !/^[^@]+@[^@]+\.[^@]+$/.test(email)) { setErr('err-email', 'Please enter a valid email.'); markField('email', false); ok = false; } else markField('email', true);
+      }
+      if (step === 2) {
+        clearErr('err-occasion');
+        const occ = document.getElementById('occasion').value;
+        if (!occ) { setErr('err-occasion', 'Please select an occasion.'); markField('occasion', false); ok = false; } else markField('occasion', true);
+      }
+      if (step === 3) {
+        clearErr('err-consent');
+        if (!document.getElementById('consent').checked) { setErr('err-consent', 'Please confirm you agree to be contacted.'); ok = false; }
+      }
+      return ok;
+    }
+
+    function goToStep(step) {
+      if (step > currentStep && !validate(currentStep)) return;
+      document.querySelectorAll('.form-step').forEach(el => {
+        const s = parseInt(el.dataset.step);
+        el.classList.toggle('active', s === step);
+        el.classList.toggle('done', s < step);
+        el.querySelector('.step-dot').textContent = s < step ? '✓' : s;
+      });
+      document.querySelectorAll('.form-page').forEach(p => p.classList.remove('active'));
+      document.getElementById('page' + step).classList.add('active');
+      if (step === 3) buildReview();
+      currentStep = step;
+      document.querySelector('.form-card').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function buildReview() {
+      const fields = [
+        { label: 'Name', value: document.getElementById('fname').value },
+        { label: 'WhatsApp', value: document.getElementById('phone').value },
+        { label: 'Email', value: document.getElementById('email').value },
+        { label: 'City', value: document.getElementById('city').value || '—' },
+        { label: 'Occasion', value: document.getElementById('occasion').value },
+        { label: 'Guest Count', value: document.getElementById('guests').value || '—' },
+        { label: 'Event Date', value: document.getElementById('edate').value || '—' },
+        { label: 'Budget', value: document.getElementById('budget').value || '—' },
+        { label: 'Special Notes', value: document.getElementById('message').value || '—', full: true },
+      ];
+      document.getElementById('reviewBox').innerHTML = fields.map(f =>
+        `<div class="review-item${f.full ? ' full' : ''}">
+        <span class="review-label">${f.label}</span>
+        <span class="review-value">${f.value}</span>
+      </div>`
+      ).join('');
+    }
+
+    // ── FORM SUBMIT WITH EMAILJS ──
+    document.getElementById('orderForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      if (!validate(3)) return;
+
+      const btn = document.getElementById('submitBtn');
+      const textEl = document.getElementById('submitText');
+      const spinEl = document.getElementById('submitSpinner');
+      btn.disabled = true;
+      textEl.style.display = 'none';
+      spinEl.style.display = 'inline';
+
+      const params = {
+        customer_name: document.getElementById('fname').value.trim(),
+        customer_email: document.getElementById('email').value.trim(),
+        customer_phone: document.getElementById('phone').value.trim(),
+        customer_city: document.getElementById('city').value.trim() || 'Not provided',
+        occasion: document.getElementById('occasion').value,
+        guest_count: document.getElementById('guests').value.trim() || 'Not specified',
+        event_date: document.getElementById('edate').value.trim() || 'Not specified',
+        budget: document.getElementById('budget').value || 'Not specified',
+        message: document.getElementById('message').value.trim() || 'None',
+        owner_email: 'contact@videoevite.com',
+        reply_to: document.getElementById('email').value.trim(),
+      };
+
+      try {
+        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_CUSTOMER, params);
+        await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_OWNER, params);
+        document.getElementById('successName').textContent = params.customer_name.split(' ')[0];
+        document.querySelectorAll('.form-steps').forEach(el => el.style.display = 'none');
+        document.getElementById('page3').classList.remove('active');
+        document.getElementById('pageSuccess').classList.add('active');
+      } catch (err) {
+        console.error('EmailJS error:', err);
+        textEl.textContent = 'Something went wrong. Please try WhatsApp or Email.';
+        textEl.style.display = 'inline';
+        textEl.style.color = '#e07070';
+        spinEl.style.display = 'none';
+        btn.disabled = false;
+      }
     });
 
-    // Form handler
-    function handleSubmit(e) {
-      e.preventDefault();
-      const btn = e.target.querySelector('.form-submit');
-      btn.textContent = '✓ Request Sent! We\'ll contact you soon.';
-      btn.style.background = '#4CAF50';
-      btn.disabled = true;
+    function resetForm(e) {
+      if (e) e.preventDefault();
+      document.getElementById('orderForm').reset();
+      document.querySelectorAll('.form-steps').forEach(el => el.style.display = '');
+      document.getElementById('pageSuccess').classList.remove('active');
+      document.querySelectorAll('.form-page').forEach(p => p.classList.remove('active'));
+      document.getElementById('page1').classList.add('active');
+      document.querySelectorAll('.form-step').forEach(el => {
+        el.classList.remove('active', 'done');
+        el.querySelector('.step-dot').textContent = el.dataset.step;
+      });
+      document.querySelector('[data-step="1"]').classList.add('active');
+      document.querySelectorAll('input,select,textarea').forEach(el => el.classList.remove('valid', 'invalid'));
+      const textEl = document.getElementById('submitText');
+      textEl.textContent = 'Send My Request ✦';
+      textEl.style.display = 'inline';
+      textEl.style.color = '';
+      document.getElementById('submitSpinner').style.display = 'none';
+      document.getElementById('submitBtn').disabled = false;
+      currentStep = 1;
     }
   </script>
+
 </body>
 
 </html>
