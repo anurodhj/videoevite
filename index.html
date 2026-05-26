@@ -4,622 +4,2041 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VideoEvite | Personalized Video Invitations & Welcome Messages SaaS</title>
-  <meta name="description"
-    content="Engage your guests, clients, and students with highly personalized host video messages. Automate video personalization for Weddings, Hotels, and Universities.">
-  <link rel="stylesheet" href="css/styles.css">
+  <title>VideoEvite — Personalized Video Messages That Move People</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8C97A;
+      --gold-pale: #F5EDD6;
+      --cream: #FAF7F2;
+      --black: #0D0C0A;
+      --charcoal: #1A1916;
+      --warm-gray: #6B6660;
+      --border: rgba(201, 168, 76, 0.25);
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Jost', sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--cream);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 4rem;
+      background: linear-gradient(to bottom, rgba(13, 12, 10, 0.95), transparent);
+      transition: background 0.4s;
+    }
+
+    nav.scrolled {
+      background: rgba(13, 12, 10, 0.97);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: var(--cream);
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(250, 247, 242, 0.7);
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .nav-cta {
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 0.6rem 1.6rem;
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .nav-cta:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201, 168, 76, 0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(201, 168, 76, 0.04) 0%, transparent 60%);
+    }
+
+    .hero-lines {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .hero-lines::before,
+    .hero-lines::after {
+      content: '';
+      position: absolute;
+      border: 1px solid var(--border);
+      border-radius: 50%;
+    }
+
+    .hero-lines::before {
+      width: 700px;
+      height: 700px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .hero-lines::after {
+      width: 1100px;
+      height: 1100px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .hero-eyebrow::before,
+    .hero-eyebrow::after {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.5;
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(3rem, 7vw, 6.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      max-width: 900px;
+      position: relative;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .hero-sub {
+      margin-top: 2rem;
+      font-size: 1rem;
+      font-weight: 300;
+      color: rgba(250, 247, 242, 0.6);
+      letter-spacing: 0.04em;
+      max-width: 500px;
+      line-height: 1.8;
+      position: relative;
+    }
+
+    .hero-actions {
+      margin-top: 3rem;
+      display: flex;
+      gap: 1.2rem;
+      align-items: center;
+      position: relative;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--black);
+      border: none;
+      padding: 1rem 2.8rem;
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s;
+      font-weight: 500;
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--cream);
+      border: 1px solid rgba(250, 247, 242, 0.3);
+      padding: 1rem 2.5rem;
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      transition: all 0.3s;
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .play-icon {
+      width: 32px;
+      height: 32px;
+      border: 1px solid rgba(250, 247, 242, 0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 3rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0.4;
+      animation: scrollBounce 2.5s ease-in-out infinite;
+    }
+
+    .hero-scroll span {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .hero-scroll-line {
+      width: 1px;
+      height: 40px;
+      background: var(--cream);
+    }
+
+    @keyframes scrollBounce {
+
+      0%,
+      100% {
+        transform: translateX(-50%) translateY(0);
+      }
+
+      50% {
+        transform: translateX(-50%) translateY(8px);
+      }
+    }
+
+    /* ── SECTION BASICS ── */
+    section {
+      padding: 7rem 4rem;
+    }
+
+    .section-eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 4vw, 3.8rem);
+      font-weight: 300;
+      line-height: 1.15;
+      max-width: 620px;
+    }
+
+    .section-title em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .divider {
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+      margin: 1.5rem 0;
+      opacity: 0.6;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .how {
+      background: var(--charcoal);
+    }
+
+    .how-inner {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+      margin-top: 3rem;
+    }
+
+    .step {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.12);
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: all 0.6s ease;
+    }
+
+    .step.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .step:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .step-num {
+      font-family: var(--font-serif);
+      font-size: 3rem;
+      font-weight: 300;
+      color: var(--gold);
+      opacity: 0.4;
+      line-height: 1;
+      min-width: 48px;
+    }
+
+    .step-text h3 {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+    }
+
+    .step-text p {
+      font-size: 0.9rem;
+      color: rgba(250, 247, 242, 0.55);
+      line-height: 1.8;
+    }
+
+    .how-visual {
+      position: relative;
+      aspect-ratio: 4/5;
+      background: rgba(201, 168, 76, 0.04);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .how-visual-inner {
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .how-visual-icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      opacity: 0.3;
+    }
+
+    .how-visual p {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-style: italic;
+      color: rgba(250, 247, 242, 0.4);
+      line-height: 1.7;
+    }
+
+    /* SAMPLE VIDEO placeholder */
+    .video-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(201, 168, 76, 0.06) 0%, rgba(13, 12, 10, 0.9) 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      cursor: pointer;
+      transition: background 0.3s;
+      position: relative;
+    }
+
+    .video-placeholder:hover {
+      background: linear-gradient(135deg, rgba(201, 168, 76, 0.12) 0%, rgba(13, 12, 10, 0.85) 100%);
+    }
+
+    .play-btn-large {
+      width: 72px;
+      height: 72px;
+      border: 1.5px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+    }
+
+    .play-btn-large svg {
+      margin-left: 5px;
+    }
+
+    .video-placeholder:hover .play-btn-large {
+      background: var(--gold);
+    }
+
+    .video-placeholder:hover .play-btn-large svg path {
+      fill: var(--black);
+    }
+
+    .video-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(250, 247, 242, 0.5);
+    }
+
+    /* ── USE CASES ── */
+    .usecases {
+      background: var(--black);
+      max-width: none;
+      padding: 7rem 0;
+    }
+
+    .usecases-header {
+      padding: 0 4rem 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .cards-scroll {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .use-card {
+      padding: 4rem 3rem;
+      border-right: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+      transition: background 0.4s;
+    }
+
+    .use-card:last-child {
+      border-right: none;
+    }
+
+    .use-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+
+    .use-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .use-card:hover {
+      background: rgba(201, 168, 76, 0.03);
+    }
+
+    .use-icon {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      display: block;
+      opacity: 0.7;
+    }
+
+    .use-num {
+      font-family: var(--font-serif);
+      font-size: 0.8rem;
+      color: var(--gold);
+      opacity: 0.5;
+      letter-spacing: 0.2em;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .use-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 400;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .use-card p {
+      font-size: 0.85rem;
+      color: rgba(250, 247, 242, 0.5);
+      line-height: 1.9;
+      margin-bottom: 1.5rem;
+    }
+
+    .use-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .use-card ul li {
+      font-size: 0.8rem;
+      color: rgba(250, 247, 242, 0.45);
+      padding-left: 1.2rem;
+      position: relative;
+    }
+
+    .use-card ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      opacity: 0.5;
+    }
+
+    /* ── WHY SECTION ── */
+    .why {
+      background: var(--gold-pale);
+      color: var(--black);
+    }
+
+    .why-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .why .section-title {
+      color: var(--black);
+    }
+
+    .why .section-eyebrow {
+      color: #8B6914;
+    }
+
+    .why .divider {
+      opacity: 1;
+    }
+
+    .why-body {
+      font-size: 1rem;
+      color: rgba(13, 12, 10, 0.65);
+      line-height: 1.9;
+      margin-top: 1.5rem;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-top: 3rem;
+    }
+
+    .stat-box {
+      background: white;
+      padding: 2rem;
+    }
+
+    .stat-num {
+      font-family: var(--font-serif);
+      font-size: 3.5rem;
+      font-weight: 300;
+      color: var(--black);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-num span {
+      color: var(--gold);
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: rgba(13, 12, 10, 0.5);
+      letter-spacing: 0.05em;
+      line-height: 1.5;
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials {
+      background: var(--charcoal);
+    }
+
+    .testimonials-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .testimonials-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 4rem;
+    }
+
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .testi-card {
+      background: rgba(201, 168, 76, 0.04);
+      border: 1px solid var(--border);
+      padding: 2.5rem;
+      position: relative;
+    }
+
+    .testi-quote {
+      font-family: var(--font-serif);
+      font-size: 3rem;
+      font-weight: 300;
+      color: var(--gold);
+      opacity: 0.3;
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .testi-text {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.8;
+      color: rgba(250, 247, 242, 0.85);
+      margin-bottom: 1.5rem;
+    }
+
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .testi-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(201, 168, 76, 0.15);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      color: var(--gold);
+    }
+
+    .testi-name {
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(250, 247, 242, 0.7);
+    }
+
+    .testi-role {
+      font-size: 0.75rem;
+      color: rgba(250, 247, 242, 0.35);
+      margin-top: 0.2rem;
+    }
+
+    /* ── PRICING ── */
+    .pricing {
+      background: var(--black);
+    }
+
+    .pricing-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .pricing-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .pricing-header .divider {
+      margin: 1.5rem auto;
+    }
+
+    .pricing-header .section-title {
+      margin: 0 auto;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .price-card {
+      background: rgba(201, 168, 76, 0.03);
+      border: 1px solid var(--border);
+      padding: 3rem 2.5rem;
+      position: relative;
+      transition: border-color 0.3s;
+    }
+
+    .price-card:hover {
+      border-color: rgba(201, 168, 76, 0.5);
+    }
+
+    .price-card.featured {
+      background: var(--gold);
+      border-color: var(--gold);
+    }
+
+    .price-card.featured * {
+      color: var(--black) !important;
+    }
+
+    .price-card.featured .price-feature {
+      border-bottom-color: rgba(13, 12, 10, 0.15) !important;
+    }
+
+    .price-card.featured .price-feature::before {
+      background: var(--black) !important;
+    }
+
+    .price-card.featured .btn-price {
+      background: var(--black);
+      color: var(--gold) !important;
+      border-color: var(--black);
+    }
+
+    .price-card.featured .btn-price:hover {
+      background: var(--charcoal);
+    }
+
+    .price-badge {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      background: var(--gold);
+      color: var(--gold) !important;
+      padding: 0.3rem 0.8rem;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+    }
+
+    .price-tier {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .price-name {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+    }
+
+    .price-desc {
+      font-size: 0.85rem;
+      color: rgba(250, 247, 242, 0.45);
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+
+    .price-amount {
+      font-family: var(--font-serif);
+      font-size: 3.2rem;
+      font-weight: 300;
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    .price-amount sup {
+      font-size: 1.2rem;
+      vertical-align: top;
+      margin-top: 0.5rem;
+      display: inline-block;
+    }
+
+    .price-period {
+      font-size: 0.75rem;
+      color: rgba(250, 247, 242, 0.4);
+      letter-spacing: 0.1em;
+      margin-bottom: 2rem;
+    }
+
+    .price-divider {
+      height: 1px;
+      background: var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .price-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .price-feature {
+      font-size: 0.85rem;
+      color: rgba(250, 247, 242, 0.6);
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.08);
+      padding-left: 1.2rem;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .price-feature:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .price-feature::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.5rem;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0.6;
+    }
+
+    .btn-price {
+      display: block;
+      width: 100%;
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      padding: 1rem;
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      transition: all 0.3s;
+      font-weight: 500;
+    }
+
+    .btn-price:hover {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    /* ── ORDER FORM ── */
+    .order {
+      background: var(--charcoal);
+    }
+
+    .order-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 6rem;
+      align-items: start;
+    }
+
+    .order-info .section-title {
+      font-size: clamp(2rem, 3.5vw, 3rem);
+    }
+
+    .order-perks {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 2.5rem;
+    }
+
+    .order-perk {
+      font-size: 0.85rem;
+      color: rgba(250, 247, 242, 0.55);
+      padding-left: 1.5rem;
+      position: relative;
+      line-height: 1.7;
+    }
+
+    .order-perk::before {
+      content: '✦';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-size: 0.6rem;
+      top: 0.3rem;
+    }
+
+    .contact-strip {
+      margin-top: 3rem;
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .contact-strip p {
+      font-size: 0.82rem;
+      color: rgba(250, 247, 242, 0.5);
+      line-height: 1.6;
+    }
+
+    .contact-strip strong {
+      color: var(--gold);
+      font-weight: 400;
+    }
+
+    /* Form */
+    .form-card {
+      background: rgba(201, 168, 76, 0.03);
+      border: 1px solid var(--border);
+      padding: 3rem;
+    }
+
+    .form-title {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      font-weight: 400;
+      margin-bottom: 2rem;
+      color: var(--cream);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group.full {
+      grid-column: span 2;
+    }
+
+    label {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(250, 247, 242, 0.45);
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select,
+    textarea {
+      background: rgba(201, 168, 76, 0.04);
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      color: var(--cream);
+      padding: 0.9rem 1.1rem;
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      font-weight: 300;
+      outline: none;
+      transition: border-color 0.3s;
+      width: 100%;
+      -webkit-appearance: none;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--gold);
+    }
+
+    select {
+      cursor: pointer;
+    }
+
+    select option {
+      background: var(--charcoal);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    ::placeholder {
+      color: rgba(250, 247, 242, 0.25);
+    }
+
+    .form-submit {
+      width: 100%;
+      background: var(--gold);
+      color: var(--black);
+      border: none;
+      padding: 1.1rem;
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      cursor: pointer;
+      font-weight: 500;
+      margin-top: 0.5rem;
+      transition: all 0.3s;
+    }
+
+    .form-submit:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--black);
+      border-top: 1px solid var(--border);
+      padding: 4rem;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 4rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .footer-brand .logo {
+      display: block;
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+    }
+
+    .footer-brand p {
+      font-size: 0.85rem;
+      color: rgba(250, 247, 242, 0.35);
+      line-height: 1.8;
+      max-width: 280px;
+    }
+
+    .footer-col h4 {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .footer-col a {
+      font-size: 0.85rem;
+      color: rgba(250, 247, 242, 0.4);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-col a:hover {
+      color: var(--gold);
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 2rem auto 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-bottom p {
+      font-size: 0.78rem;
+      color: rgba(250, 247, 242, 0.25);
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: #25D366;
+      color: white;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+      z-index: 200;
+      text-decoration: none;
+      transition: transform 0.3s;
+      font-size: 1.5rem;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+    }
+
+    /* ── SAMPLES SECTION ── */
+    .samples-section {
+      background: var(--black);
+      padding: 7rem 4rem;
+    }
+
+    .samples-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .samples-header {
+      margin-bottom: 4rem;
+    }
+
+    .samples-sub {
+      font-size: 0.95rem;
+      color: rgba(250, 247, 242, 0.45);
+      line-height: 1.9;
+      max-width: 580px;
+      margin-top: 1rem;
+    }
+
+    .samples-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 960px;
+    }
+
+    .sample-card {
+      background: rgba(201, 168, 76, 0.03);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: border-color 0.4s;
+    }
+
+    .sample-card:hover {
+      border-color: rgba(201, 168, 76, 0.45);
+    }
+
+    .sample-tag {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.9rem 1.4rem;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: rgba(201, 168, 76, 0.05);
+    }
+
+    .sample-icon {
+      font-size: 1rem;
+    }
+
+    .sample-video-wrap {
+      position: relative;
+      aspect-ratio: 9/16;
+      background: var(--charcoal);
+      overflow: hidden;
+    }
+
+    .sample-video-wrap video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+      background: #000;
+    }
+
+    .sample-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+      background: rgba(13, 12, 10, 0.55);
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .sample-overlay:hover {
+      background: rgba(13, 12, 10, 0.35);
+    }
+
+    .sample-overlay.hidden {
+      display: none;
+    }
+
+    .sample-info {
+      padding: 1.6rem 1.8rem 2rem;
+    }
+
+    .sample-info h3 {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 400;
+      margin-bottom: 0.6rem;
+      color: var(--cream);
+    }
+
+    .sample-info p {
+      font-size: 0.85rem;
+      color: rgba(250, 247, 242, 0.45);
+      line-height: 1.8;
+      font-style: italic;
+      font-family: var(--font-serif);
+    }
+
+    .sample-info p em {
+      color: var(--gold-light);
+      font-style: italic;
+    }
+
+    .samples-cta {
+      margin-top: 4rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .samples-cta p {
+      font-size: 1rem;
+      color: rgba(250, 247, 242, 0.5);
+      letter-spacing: 0.04em;
+    }
+
+    .samples-cta strong {
+      color: var(--cream);
+      font-weight: 400;
+    }
+
+    /* Animations */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.7s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 900px) {
+      nav {
+        padding: 1.2rem 1.5rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      section {
+        padding: 5rem 1.5rem;
+      }
+
+      .samples-section {
+        padding: 5rem 1.5rem;
+      }
+
+      .how-inner,
+      .why-inner,
+      .order-inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .cards-scroll {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .samples-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .testi-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pricing-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .form-group.full {
+        grid-column: span 1;
+      }
+
+      .stats {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .cards-scroll {
+        grid-template-columns: 1fr;
+      }
+
+      .testimonials-header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+      }
+
+      footer {
+        padding: 3rem 1.5rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-  <!-- Header Navigation -->
-  <header>
-    <div class="nav-container">
-      <a href="#" class="logo">
-        <div class="logo-dot"></div>
-        <span>VideoEvite</span>
-      </a>
-      <nav>
-        <ul>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#showcase">Product Demo</a></li>
-          <li><a href="#workflow">How It Works</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li><a href="#contact" class="btn btn-secondary btn-sm open-demo-modal">Request Demo</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  <!-- NAV -->
+  <nav id="mainNav">
+    <a href="#" class="logo">Video<span>Evite</span></a>
+    <ul class="nav-links">
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#occasions">Occasions</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#samples">Samples</a></li>
+    </ul>
+    <a href="#order" class="nav-cta">Order Now</a>
+  </nav>
 
-  <!-- Hero Section -->
+  <!-- HERO -->
   <section class="hero">
-    <div class="container hero-grid">
-      <div class="hero-content">
-        <div class="hero-tag">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-            class="feather feather-sparkles">
-            <path
-              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m11.314 11.314l.707.707M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z" />
-          </svg>
-          <span>Automated Host Video Personalization</span>
-        </div>
-        <h1>Deliver Magic. <br><span class="text-gradient">Personalize Every Guest Experience via Video.</span></h1>
-        <p>Take a single recording of your wedding host, hotel General Manager, or college Dean, and automatically
-          generate thousands of unique, personalized videos addressed to each recipient by name and detail variables.
-        </p>
-        <div class="hero-ctas">
-          <a href="#showcase" class="btn btn-primary">Try Interactive Demo</a>
-          <a href="#contact" class="btn btn-secondary open-demo-modal">Schedule Tour</a>
-        </div>
-      </div>
+    <div class="hero-bg"></div>
+    <div class="hero-lines"></div>
 
-      <div class="hero-mockup-container">
-        <!-- Floating badge 1 -->
-        <div class="floating-badge fb-1">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-            stroke="var(--accent-purple)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14">
-              </polyline>
-              <polyline points="22 4 12 14.01 9 11.01"></polyline>
-          </svg>
-          <div>
-            <div style="font-weight: 800;">10,000+ Videos</div>
-            <div style="font-size: 0.7rem; color: var(--text-secondary);">Rendered & Sent Instantly</div>
-          </div>
-        </div>
+    <p class="hero-eyebrow">Redefining First Impressions</p>
 
-        <!-- Simulated Hero Player Mockup -->
-        <div class="hero-mockup">
-          <div class="mockup-header">
-            <span class="mockup-dot"></span>
-            <span class="mockup-dot"></span>
-            <span class="mockup-dot"></span>
-          </div>
-          <div class="mockup-video-box">
-            <img class="mockup-video-bg" src="assets/wedding_host.png" alt="Wedding Host Video Preview">
-            <div class="mockup-overlay-card">
-              <div class="overlay-badge">Personalized Guest Preview</div>
-              <div class="overlay-name">Dear David & Emily Miller</div>
-              <div class="overlay-desc">You are cordially invited to celebrate our wedding day.</div>
-            </div>
-          </div>
-        </div>
+    <h1 class="hero-title">
+      Every Guest Deserves a<br>
+      <em>Moment Made for Them</em>
+    </h1>
 
-        <!-- Floating badge 2 -->
-        <div class="floating-badge fb-2">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-            stroke="var(--accent-teal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+    <p class="hero-sub">
+      Personalized video messages that carry their name, their story, your emotion — delivered before they even arrive.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#order" class="btn-primary">Request a Sample</a>
+      <a href="#samples" class="btn-ghost">
+        <span class="play-icon">
+          <svg width="8" height="10" viewBox="0 0 8 10">
+            <path d="M1 1L7 5L1 9V1Z" fill="rgba(250,247,242,0.8)" stroke="none" />
           </svg>
-          <div>
-            <div style="font-weight: 800;">99.4% Open Rate</div>
-            <div style="font-size: 0.7rem; color: var(--text-secondary);">Outperforms standard text</div>
-          </div>
-        </div>
-      </div>
+        </span>
+        Watch Sample
+      </a>
+    </div>
+
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="hero-scroll-line"></div>
     </div>
   </section>
 
-  <!-- Core Services Summary -->
-  <section class="services-summary" id="services">
-    <div class="container">
-      <div class="section-header">
-        <h2>Tailored Personalization for Any Scale</h2>
-        <p>VideoEvite transforms standard bulk notifications into memorable, high-converting premium experiences. Here
-          are the core industries we power:</p>
-      </div>
+  <!-- HOW IT WORKS -->
+  <section class="how" id="how">
+    <div class="how-inner">
+      <div>
+        <p class="section-eyebrow fade-up">The Process</p>
+        <h2 class="section-title fade-up">Simple for You.<br><em>Unforgettable</em> for Them.</h2>
+        <div class="divider fade-up"></div>
 
-      <div class="services-grid">
-        <!-- Service 1: Marriage -->
-        <div class="service-card">
-          <div class="service-icon-box sib-wedding">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path
-                d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-            </svg>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">01</div>
+            <div class="step-text">
+              <h3>Share Your Guest List & Details</h3>
+              <p>Send us your guest list — names, event details, any personal touches. We handle the rest with care and
+                confidentiality.</p>
+            </div>
           </div>
-          <h3>Personalized Marriage Video Invitations</h3>
-          <p>Ditch boring cardboard invites. The bride and groom record a warm, emotional greeting video. Our platform
-            automatically personalizes the video overlays for every individual guest, sending them a high-end invitation
-            portal with RSVP tracking.</p>
-          <ul class="service-features-list">
-            <li>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-              <span>Dynamic Guest Name overlay on intro & cards</span>
-            </li>
-            <li>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-              <span>Romantic instrumental music sync</span>
-            </li>
-            <li>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-              <span>Integrated guest RSVP portal</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Service 2: Hotel -->
-        <div class="service-card">
-          <div class="service-icon-box sib-hotel">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-              <polyline points="9 22 9 12 15 12 15 22" />
-            </svg>
+          <div class="step">
+            <div class="step-num">02</div>
+            <div class="step-text">
+              <h3>We Craft Each Personalized Video</h3>
+              <p>Our team creates a beautiful, individually tailored video for every guest — their name, their detail,
+                your brand.</p>
+            </div>
           </div>
-          <h3>Hotel Booking Video Confirmations</h3>
-          <p>Elevate hospitality before check-in. The Hotel's General Manager records a premium greeting, which is
-            automatically dynamicized with the guest's name, room type, check-in dates, and details on hotel spa or
-            dining amenities.</p>
-          <ul class="service-features-list">
-            <li>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-              <span>Personalized video message from the GM</span>
-            </li>
-            <li>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-              <span>Automated PMS booking engine triggers</span>
-            </li>
-            <li>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-              <span>Upsell upgrades directly inside player cards</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Service 3: College -->
-        <div class="service-card">
-          <div class="service-icon-box sib-college">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-              <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5" />
-            </svg>
+          <div class="step">
+            <div class="step-num">03</div>
+            <div class="step-text">
+              <h3>Delivered as Private, Shareable Links</h3>
+              <p>Each guest receives a unique link. You share it via WhatsApp, email, or SMS — they open it and feel
+                something.</p>
+            </div>
           </div>
-          <h3>Dean's Acceptance Video Welcome</h3>
-          <p>Make college acceptance letters unforgettable. The University Dean records a congratulations video.
-            VideoEvite personalizes and emails a link to admitted candidates, rendering the student's name, major, and
-            scholarship details dynamically.</p>
-          <ul class="service-features-list">
-            <li>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-              <span>Dean video addressed to the student</span>
-            </li>
-            <li>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-              <span>Admitted major & campus onboarding info</span>
-            </li>
-            <li>
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-              <span>Accept Offer digital CTAs & Confetti triggers</span>
-            </li>
-          </ul>
+          <div class="step">
+            <div class="step-num">04</div>
+            <div class="step-text">
+              <h3>They Remember It Forever</h3>
+              <p>The moment someone sees their name in a luxury video — that becomes the memory they talk about.</p>
+            </div>
+          </div>
         </div>
       </div>
+
     </div>
   </section>
 
-  <!-- Interactive Demo Showcase Workspace -->
-  <section class="interactive-showcase" id="showcase">
-    <div class="container">
-      <div class="section-header">
-        <h2>Interactive Personalization Demo</h2>
-        <p>Switch templates, edit the dynamic variables below, and watch how the recipient's personalized video changes
-          instantly in real-time!</p>
-      </div>
-
-      <div class="showcase-wrapper">
-        <div class="showcase-tabs">
-          <button class="showcase-tab active" id="tab-wedding">Marriage Invite</button>
-          <button class="showcase-tab" id="tab-hotel">Hotel Booking Welcome</button>
-          <button class="showcase-tab" id="tab-college">College Acceptance</button>
+  <!-- SAMPLES -->
+  <section class="samples-section" id="samples">
+    <center>
+      <div class="samples-inner">
+        <div class="samples-header fade-up">
+          <p class="section-eyebrow">See It To Believe It</p>
+          <h2 class="section-title">Sample <em>Videos</em></h2>
+          <div class="divider"></div>
+          <p class="samples-sub">Watch how a personalized video feels compared to any ordinary invite. Each one below is
+            a
+            real sample — notice how the guest's name makes all the difference.</p>
         </div>
 
-        <div class="showcase-grid">
-          <!-- Live Preview Control Input Form -->
-          <div class="showcase-control-card">
-            <h3 id="showcase-title">Wedding Video Invitation</h3>
-            <p id="showcase-desc">The couple records a warm invite; VideoEvite overlays the guest name in a premium
-              layout.</p>
+        <div class="samples-grid">
 
-            <!-- Video Example Toggle pills -->
-            <div class="video-example-toggle" id="video-example-toggle">
-              <span class="toggle-title">Select Video Example</span>
-              <div class="toggle-buttons">
-                <button type="button" class="btn-toggle active" data-video="white">White Wedding</button>
-                <button type="button" class="btn-toggle" data-video="phuket">Phuket Wedding</button>
-              </div>
+          <!-- WEDDING -->
+          <div class="sample-card fade-up">
+            <div class="sample-tag">
+              <span class="sample-icon">💍</span>
+              <span>Wedding Invitation</span>
             </div>
-
-            <form class="showcase-form" id="showcase-form" onsubmit="event.preventDefault();">
-              <!-- Dynamically populated via JS -->
-            </form>
-
-            <button class="btn btn-primary open-demo-modal" style="width: 100%; margin-top: 24px;">Request API / SaaS
-              Trial</button>
-          </div>
-
-          <!-- Live Simulated Video Player -->
-          <div class="showcase-player-box">
-            <div class="live-player" id="live-player">
-              <div class="video-label-indicator">
-                <span class="live-badge"></span>
-                <span>Personalized Video Stream</span>
-              </div>
-
-              <!-- Video Background Image Track -->
-              <img id="player-bg" class="live-player-video-bg" src="assets/wedding_host.png"
-                alt="Simulated video speaker track">
-              <!-- Actual Video Background Track -->
-              <video id="player-video" class="live-player-video-bg" loop muted playsinline
-                style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;"></video>
-
-              <!-- Personalization Overlay Templates -->
-              <!-- 1. Wedding Overlay -->
-              <div class="overlay-wedding-template active" id="overlay-wedding">
-                <div class="wedding-frame">
-                  <div class="wedding-decor-top">❦</div>
-                  <div style="z-index: 10;">
-                    <div class="wedding-invite-header" id="ow-names">Alexander & Sophia</div>
-                    <div class="wedding-names">Invite You</div>
-                    <div class="wedding-guest-label">To share in their wedding joy</div>
-                    <div class="wedding-guest-name" id="ow-guest">David & Emily Miller</div>
-                    <div class="wedding-details" id="ow-date">September 18, 2026</div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- 2. Hotel Overlay -->
-              <div class="overlay-hotel-template" id="overlay-hotel">
-                <div class="hotel-welcome-card">
-                  <div class="hotel-gm-tag">Message from General Manager</div>
-                  <div class="hotel-welcome-title">Welcome back, <span id="oh-guest">Sarah Jenkins</span>!</div>
-                  <div class="hotel-welcome-text">Your suite is fully prepared. Let us know how we can make your
-                    check-in seamless.</div>
-                  <div class="hotel-booking-details">
-                    <div class="hotel-detail-item">
-                      <span class="hotel-detail-label">Reserved Room</span>
-                      <span class="hotel-detail-value" id="oh-room">Presidential Penthouse</span>
-                    </div>
-                    <div class="hotel-detail-item">
-                      <span class="hotel-detail-label">Check-in Date</span>
-                      <span class="hotel-detail-value" id="oh-date">June 15, 2026</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- 3. College Overlay -->
-              <div class="overlay-college-template" id="overlay-college">
-                <div class="college-badge-seal">VU</div>
-                <div class="college-letter-card">
-                  <div class="college-letter-header">Dean's Video Welcome</div>
-                  <div class="college-letter-body">
-                    <h4>Congratulations, <span id="oc-student">Liam Gallagher</span>!</h4>
-                    <p>On behalf of the admissions board, I am thrilled to welcome you to Vanguard University. We are
-                      proud to accept you based on your exceptional achievements.</p>
-                  </div>
-                  <div class="college-letter-meta">
-                    <div class="college-meta-item">Program: <span id="oc-major">B.S. Aerospace Engineering</span></div>
-                    <div class="college-meta-item">Grant: <span id="oc-scholarship">Dean's Excellence Scholar</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Player Play/Pause controls bar -->
-              <div class="player-controls">
-                <button class="play-pause-btn" id="play-btn">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                    fill="currentColor">
-                    <path d="M8 5v14l11-7z" />
+            <div class="sample-video-wrap">
+              <!-- REPLACE src WITH YOUR ACTUAL VIDEO FILE PATH e.g. src="videos/wedding-sample.mp4" -->
+              <video controls poster="" preload="none">
+                <source src="assets/Phuket_Wedding.mp4" type="video/mp4">
+              </video>
+              <div class="sample-overlay" onclick="playVideo(this)">
+                <div class="play-btn-large">
+                  <svg width="20" height="22" viewBox="0 0 20 22">
+                    <path d="M2 2L18 11L2 20V2Z" fill="none" stroke="#C9A84C" stroke-width="1.5"
+                      stroke-linejoin="round" />
                   </svg>
-                </button>
-                <div class="player-timeline">
-                  <div class="player-progress" id="player-progress"></div>
                 </div>
-                <span class="player-time" id="player-time">0:00 / 0:10</span>
+                <span class="video-label">Play Sample</span>
               </div>
+            </div>
+            <div class="sample-info">
+              <h3>Wedding Invitation</h3>
+              <p>"Dear <em>Priya</em>, Rohan &amp; Sneha joyfully invite you to share in the celebration of their
+                union…"
+              </p>
+            </div>
+          </div>
+
+          <!-- COLLEGE ADMISSIONS -->
+          <div class="sample-card fade-up">
+            <div class="sample-tag">
+              <span class="sample-icon">🎓</span>
+              <span>College Admission</span>
+            </div>
+            <div class="sample-video-wrap">
+              <!-- REPLACE src WITH YOUR ACTUAL VIDEO FILE PATH e.g. src="videos/college-sample.mp4" -->
+              <video controls poster="" preload="none">
+                <source src="assets/college.mp4" type="video/mp4">
+              </video>
+              <div class="sample-overlay" onclick="playVideo(this)">
+                <div class="play-btn-large">
+                  <svg width="20" height="22" viewBox="0 0 20 22">
+                    <path d="M2 2L18 11L2 20V2Z" fill="none" stroke="#C9A84C" stroke-width="1.5"
+                      stroke-linejoin="round" />
+                  </svg>
+                </div>
+                <span class="video-label">Play Sample</span>
+              </div>
+            </div>
+            <div class="sample-info">
+              <h3>College Admission</h3>
+              <p>"Congratulations <em>Arjun</em>! On behalf of the entire faculty, we are delighted to welcome you to
+                the
+                Class of 2025…"</p>
+            </div>
+          </div>
+
+          <!-- HOTEL BOOKING -->
+          <div class="sample-card fade-up">
+            <div class="sample-tag">
+              <span class="sample-icon">🏨</span>
+              <span>Hotel Booking Confirmation</span>
+            </div>
+            <div class="sample-video-wrap">
+              <!-- REPLACE src WITH YOUR ACTUAL VIDEO FILE PATH e.g. src="videos/hotel-sample.mp4" -->
+              <video controls poster="" preload="none">
+                <source src="assets/white_wedding.mp4" type="video/mp4">
+              </video>
+              <div class="sample-overlay" onclick="playVideo(this)">
+                <div class="play-btn-large">
+                  <svg width="20" height="22" viewBox="0 0 20 22">
+                    <path d="M2 2L18 11L2 20V2Z" fill="none" stroke="#C9A84C" stroke-width="1.5"
+                      stroke-linejoin="round" />
+                  </svg>
+                </div>
+                <span class="video-label">Play Sample</span>
+              </div>
+            </div>
+            <div class="sample-info">
+              <h3>Hotel Booking Confirmation</h3>
+              <p>"Welcome, <em>Mr. &amp; Mrs. Kapoor</em>. Your stay at The Grand Oberoi from the 14th is confirmed. We
+                can't wait to host you…"</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="samples-cta fade-up">
+          <p>Like what you see? <strong>Your guests will feel this.</strong></p>
+          <a href="#order" class="btn-primary">Order Your Personalized Videos</a>
+        </div>
+      </div>
+  </section>
+  </center>
+
+  <!-- USE CASES -->
+  <section class="usecases" id="occasions">
+    <div class="usecases-header">
+      <p class="section-eyebrow fade-up">Every Occasion, Elevated</p>
+      <h2 class="section-title fade-up">Where We <em>Transform</em><br>the Experience</h2>
+    </div>
+
+    <div class="cards-scroll">
+      <div class="use-card fade-up">
+        <span class="use-icon">💍</span>
+        <span class="use-num">01 / 04</span>
+        <h3>Wedding Invitations</h3>
+        <p>Imagine each guest receiving a video that says their name, countdown to your day, and a message from the
+          couple. Nothing else comes close.</p>
+        <ul>
+          <li>Individual guest name callout</li>
+          <li>Couple's personal message</li>
+          <li>Date, venue, dress code</li>
+          <li>RSVP link embedded</li>
+        </ul>
+      </div>
+
+      <div class="use-card fade-up">
+        <span class="use-icon">🏨</span>
+        <span class="use-num">02 / 04</span>
+        <h3>Luxury Hotel Welcome</h3>
+        <p>A pre-arrival video that greets your guest by name, previews their room, and sets the tone of the experience
+          before they even check in.</p>
+        <ul>
+          <li>Guest name & arrival date</li>
+          <li>Room & amenity preview</li>
+          <li>Concierge introduction</li>
+          <li>Upsell in elegance</li>
+        </ul>
+      </div>
+
+      <div class="use-card fade-up">
+        <span class="use-icon">🎓</span>
+        <span class="use-num">03 / 04</span>
+        <h3>College Admissions</h3>
+        <p>Transform the acceptance or orientation experience. Students receive a personalized video welcome that makes
+          the biggest decision feel celebrated.</p>
+        <ul>
+          <li>Student name & program</li>
+          <li>Dean's personal message</li>
+          <li>Campus preview</li>
+          <li>Orientation details</li>
+        </ul>
+      </div>
+
+      <div class="use-card fade-up">
+        <span class="use-icon">🎊</span>
+        <span class="use-num">04 / 04</span>
+        <h3>Corporate & Events</h3>
+        <p>From executive retreats to product launches — personalized video invitations signal prestige and ensure every
+          attendee feels like a VIP.</p>
+        <ul>
+          <li>Board meetings & galas</li>
+          <li>Client appreciation</li>
+          <li>Product launch invites</li>
+          <li>Award ceremonies</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY SECTION -->
+  <section class="why">
+    <div class="why-inner">
+      <div class="fade-up">
+        <p class="section-eyebrow">Why VideoEvite</p>
+        <h2 class="section-title">The Difference<br><em>People Feel</em></h2>
+        <div class="divider"></div>
+        <p class="why-body">
+          A standard invite is forgotten. A personalized video message is shared, screenshotted, and remembered. In a
+          world drowning in notifications, hearing your own name — seeing it on screen — cuts through everything else.
+          <br><br>
+          We exist at the intersection of luxury and technology, where every touchpoint becomes a statement.
+        </p>
+      </div>
+
+      <div class="stats fade-up">
+        <div class="stat-box">
+          <div class="stat-num">8<span>×</span></div>
+          <div class="stat-label">Higher open rate vs standard email invites</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">94<span>%</span></div>
+          <div class="stat-label">Guests say it made them feel truly special</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">3<span>×</span></div>
+          <div class="stat-label">More likely to be shared on social media</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">48<span>h</span></div>
+          <div class="stat-label">Average delivery from order to final videos</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="testimonials-inner">
+      <div class="testimonials-header fade-up">
+        <div>
+          <p class="section-eyebrow">What They Say</p>
+          <h2 class="section-title">Voices That<br><em>Moved Us</em></h2>
+        </div>
+      </div>
+
+      <div class="testi-grid">
+        <div class="testi-card fade-up">
+          <div class="testi-quote">"</div>
+          <p class="testi-text">When our guests received their personal video invite, the reactions were beyond anything
+            I imagined. Three people called me crying happy tears before the wedding.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">A</div>
+            <div>
+              <div class="testi-name">Anika Sharma</div>
+              <div class="testi-role">Bride, Mumbai</div>
             </div>
           </div>
         </div>
 
-    
-    </div>
-  </section>
+        <div class="testi-card fade-up">
+          <div class="testi-quote">"</div>
+          <p class="testi-text">We sent VideoEvite welcome messages to our top-tier guests before check-in. The feedback
+            was extraordinary. It's now a standard part of our pre-arrival experience.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">R</div>
+            <div>
+              <div class="testi-name">Rahul Mehta</div>
+              <div class="testi-role">GM, Boutique Resort, Goa</div>
+            </div>
+          </div>
+        </div>
 
-  <!-- Integration Workflow Pipeline -->
-  <section class="pipeline" id="workflow">
-    <div class="container">
-      <div class="section-header">
-        <h2>How VideoEvite Works</h2>
-        <p>A simple, automated workflow that processes guest data lists, layers personalized overlays, and emails or
-          texts custom videos to individual recipients.</p>
-      </div>
-
-      <div class="pipeline-grid">
-        <div class="pipeline-step">
-          <div class="step-number">01</div>
-          <h3>Record & Upload</h3>
-          <p>Upload a high-quality video of the host, GM, or Dean inviting or welcoming guests.</p>
-        </div>
-        <div class="pipeline-step">
-          <div class="step-number">02</div>
-          <h3>Map Variables</h3>
-          <p>Select which parts of the video card dynamically fetch guest names, dates, or titles from your data.</p>
-        </div>
-        <div class="pipeline-step">
-          <div class="step-number">03</div>
-          <h3>Sync Customer Data</h3>
-          <p>Upload a CSV file or link directly via booking systems, CRMs, or our Developer API.</p>
-        </div>
-        <div class="pipeline-step">
-          <div class="step-number">04</div>
-          <h3>Auto-Personalize</h3>
-          <p>Our cloud engine automatically generates personalized video pages, sent via Email, SMS, or WhatsApp.</p>
+        <div class="testi-card fade-up">
+          <div class="testi-quote">"</div>
+          <p class="testi-text">Our new students got a personalized admission video. The college WhatsApp groups blew up
+            with reactions. Enrollment intent went up noticeably that week.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">P</div>
+            <div>
+              <div class="testi-name">Prof. Priya Nair</div>
+              <div class="testi-role">Admissions Director, Pune</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Pricing Tiers -->
+  <!-- PRICING -->
   <section class="pricing" id="pricing">
-    <div class="container">
-      <div class="section-header">
-        <h2>Flexible Plans for any Event or Enterprise</h2>
-        <p>Whether you're inviting guests to a single wedding or automating hotel confirmations at scale, we have a
-          tailored plan for you.</p>
+    <div class="pricing-inner">
+      <div class="pricing-header fade-up">
+        <p class="section-eyebrow">Investment</p>
+        <h2 class="section-title">Choose Your <em>Package</em></h2>
+        <div class="divider"></div>
+        <p style="font-size:0.9rem;color:rgba(250,247,242,0.45);margin-top:1rem">All packages include personal
+          consultation. Custom pricing for large orders.</p>
       </div>
 
       <div class="pricing-grid">
-        <!-- Card 1: Event Plan -->
-        <div class="pricing-card">
-          <div class="pricing-header">
-            <h3>Wedding Host / Event</h3>
-            <p>Perfect for weddings, anniversaries, or single-occurrence gala events.</p>
-          </div>
-          <div class="price">$149<span>/ event</span></div>
-          <ul class="pricing-features">
-            <li>
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-              <span>Up to 500 personalized guest videos</span>
-            </li>
-            <li>
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-              <span>1 Custom Host Video template design</span>
-            </li>
-            <li>
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-              <span>Online RSVP tracking dashboard</span>
-            </li>
-            <li>
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-              <span>CSV Guest list import</span>
-            </li>
+        <div class="price-card fade-up">
+          <div class="price-tier">Essential</div>
+          <div class="price-name">The Intimate</div>
+          <div class="price-desc">Perfect for smaller gatherings where every detail matters.</div>
+          <div class="price-amount"><sup>₹</sup>4,999</div>
+          <div class="price-period">Up to 25 personalized videos</div>
+          <div class="price-divider"></div>
+          <ul class="price-features">
+            <li class="price-feature">Guest name personalization</li>
+            <li class="price-feature">1 video template design</li>
+            <li class="price-feature">Private shareable links</li>
+            <li class="price-feature">48-hour delivery</li>
+            <li class="price-feature">WhatsApp-ready format</li>
           </ul>
-          <a href="#" class="btn btn-secondary open-demo-modal">Get Started</a>
+          <a href="#order" class="btn-price">Get Started</a>
         </div>
 
-        <!-- Card 2: Hospitality Plan -->
-        <div class="pricing-card popular">
-          <div class="popular-badge">Most Popular</div>
-          <div class="pricing-header">
-            <h3>Hospitality Pro</h3>
-            <p>For boutique hotels, resorts, and premium guest suites looking to automate confirmations.</p>
-          </div>
-          <div class="price">$399<span>/ month</span></div>
-          <ul class="pricing-features">
-            <li>
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-              <span>Up to 2,500 booking videos/month</span>
-            </li>
-            <li>
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-              <span>Multiple GM templates & seasonal greetings</span>
-            </li>
-            <li>
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-              <span>PMS (Hotel Property Mgmt) Integrations</span>
-            </li>
-            <li>
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-              <span>Email & SMS delivery channel triggers</span>
-            </li>
+        <div class="price-card featured fade-up">
+          <div class="price-badge">Most Popular</div>
+          <div class="price-tier">Signature</div>
+          <div class="price-name">The Grand</div>
+          <div class="price-desc">Our most beloved package for weddings and premium events.</div>
+          <div class="price-amount"><sup>₹</sup>12,999</div>
+          <div class="price-period">Up to 100 personalized videos</div>
+          <div class="price-divider"></div>
+          <ul class="price-features">
+            <li class="price-feature">Full name + message personalization</li>
+            <li class="price-feature">2 custom template designs</li>
+            <li class="price-feature">Priority 24-hour delivery</li>
+            <li class="price-feature">Branded intro / outro</li>
+            <li class="price-feature">Dedicated account manager</li>
+            <li class="price-feature">1 revision round included</li>
           </ul>
-          <a href="#" class="btn btn-primary open-demo-modal">Start Free Trial</a>
+          <a href="#order" class="btn-price">Get Started</a>
         </div>
 
-        <!-- Card 3: University Plan -->
-        <div class="pricing-card">
-          <div class="pricing-header">
-            <h3>University Enterprise</h3>
-            <p>For colleges and school systems looking to customize applicant admissions.</p>
-          </div>
-          <div class="price">Custom<span>/ annual</span></div>
-          <ul class="pricing-features">
-            <li>
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-              <span>Unlimited student acceptance video streams</span>
-            </li>
-            <li>
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-              <span>Custom Dean onboarding micro-portals</span>
-            </li>
-            <li>
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-              <span>CRM Integrations (Slate, Salesforce, Ellucian)</span>
-            </li>
-            <li>
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-              <span>Dedicated customer success engineer</span>
-            </li>
+        <div class="price-card fade-up">
+          <div class="price-tier">Enterprise</div>
+          <div class="price-name">The Elite</div>
+          <div class="price-desc">For hotels, institutions and corporate clients with scale.</div>
+          <div class="price-amount" style="font-size:2.2rem">Custom</div>
+          <div class="price-period">Unlimited volume, bespoke experience</div>
+          <div class="price-divider"></div>
+          <ul class="price-features">
+            <li class="price-feature">Unlimited personalized videos</li>
+            <li class="price-feature">Full brand integration</li>
+            <li class="price-feature">White-label delivery portal</li>
+            <li class="price-feature">API / bulk upload support</li>
+            <li class="price-feature">Dedicated production team</li>
+            <li class="price-feature">Monthly retainer options</li>
           </ul>
-          <a href="#" class="btn btn-secondary open-demo-modal">Contact Sales</a>
+          <a href="#order" class="btn-price">Talk to Us</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer Section -->
-  <footer>
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <a href="#" class="logo">
-          <div class="logo-dot"></div>
-          <span>VideoEvite</span>
-        </a>
-        <p>Premium SaaS solution for host-led personalized video invitations, bookings, and acceptance portals.</p>
-      </div>
-      <div class="footer-links-col">
-        <h4>Solutions</h4>
-        <ul>
-          <li><a href="#services">For Weddings</a></li>
-          <li><a href="#services">For Hospitality</a></li>
-          <li><a href="#services">For Universities</a></li>
-        </ul>
-      </div>
-      <div class="footer-links-col">
-        <h4>Product</h4>
-        <ul>
-          <li><a href="#showcase">Interactive Demo</a></li>
-          <li><a href="#workflow">How It Works</a></li>
-          <li><a href="#pricing">Pricing Plans</a></li>
-        </ul>
-      </div>
-      <div class="footer-links-col">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="#contact" class="open-demo-modal">Contact Us</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Terms of Service</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="container footer-bottom" style="padding-top: 30px; padding-bottom: 0;">
-      <p>&copy; 2026 VideoEvite. All rights reserved. Registered Domain: www.videoevite.com</p>
-      <div class="footer-socials">
-        <a href="#">Twitter</a>
-        <a href="#">LinkedIn</a>
-        <a href="#">GitHub</a>
-      </div>
-    </div>
-  </footer>
+  <!-- ORDER FORM -->
+  <section class="order" id="order">
+    <div class="order-inner">
+      <div class="order-info fade-up">
+        <p class="section-eyebrow">Start Your Order</p>
+        <h2 class="section-title">Let's Create Something <em>Beautiful</em></h2>
+        <div class="divider"></div>
 
-  <!-- Lead Capture Demo Request Modal -->
-  <div class="modal-overlay" id="modal-overlay">
-    <div class="modal-container" id="modal-container">
-      <button class="close-modal-btn" id="close-modal" aria-label="Close demo modal">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
-      </button>
-      <div id="modal-body-content">
-        <div class="modal-header">
-          <h2>Request a Product Demo</h2>
-          <p>Schedule a live 1-on-1 walkthrough with our integration team to see VideoEvite in action for your
-            organization.</p>
+        <ul class="order-perks">
+          <li>Tell us your occasion and we'll recommend the perfect format</li>
+          <li>No design experience needed — we handle everything</li>
+          <li>You'll receive a sample video within 24 hours of inquiry</li>
+          <li>Fully confidential — your guest list is secure with us</li>
+          <li>Served clients across India and internationally</li>
+        </ul>
+
+        <div class="contact-strip">
+          <div style="font-size:1.5rem;opacity:0.7">📱</div>
+          <p>Prefer to talk first? Message us on<br><strong>WhatsApp: +91 XXXXX XXXXX</strong></p>
         </div>
-        <form class="modal-form" id="lead-form">
-          <div class="form-group">
-            <label for="demo-name">Full Name</label>
-            <input type="text" id="demo-name" placeholder="John Doe" required>
+      </div>
+
+      <div class="form-card fade-up">
+        <h3 class="form-title">Request Your Free Sample</h3>
+
+        <form onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">Your Name</label>
+              <input type="text" id="fname" placeholder="Anjali Kapoor" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone / WhatsApp</label>
+              <input type="tel" id="phone" placeholder="+91 98765 43210" required>
+            </div>
           </div>
+
           <div class="form-group">
-            <label for="demo-email">Work Email</label>
-            <input type="email" id="demo-email" placeholder="john@company.com" required>
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="you@email.com">
           </div>
+
           <div class="form-group">
-            <label for="demo-company">Company / Wedding Host Name</label>
-            <input type="text" id="demo-company" placeholder="e.g. Grand Plaza Hotels / Smith-Jones Wedding" required>
-          </div>
-          <div class="form-group">
-            <label for="demo-use-case">Primary Use Case</label>
-            <select id="demo-use-case" required>
-              <option value="" disabled selected>Select your application...</option>
-              <option value="marriage">Personalized Marriage Video Invitations</option>
-              <option value="hotel">Hotel GM Booking Confirmations</option>
-              <option value="college">College Admission Dean Video Welcome</option>
-              <option value="other">Other custom SaaS integrations</option>
+            <label for="occasion">Occasion Type</label>
+            <select id="occasion" required>
+              <option value="" disabled selected>Select your occasion</option>
+              <option>Wedding Invitation</option>
+              <option>Luxury Hotel Welcome</option>
+              <option>College Admissions</option>
+              <option>Corporate / Gala Event</option>
+              <option>Birthday Celebration</option>
+              <option>Other</option>
             </select>
           </div>
-          <div class="form-group">
-            <label for="demo-message">Tell us about your project (optional)</label>
-            <textarea id="demo-message" placeholder="We need to send 500 personalized videos per month..."></textarea>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="guests">Approx. Guest Count</label>
+              <input type="text" id="guests" placeholder="e.g. 150 guests">
+            </div>
+            <div class="form-group">
+              <label for="date">Event Date</label>
+              <input type="text" id="date" placeholder="e.g. Dec 2025">
+            </div>
           </div>
-          <button type="submit" class="btn btn-primary">Schedule Demo</button>
+
+          <div class="form-group full">
+            <label for="message">Anything you'd like us to know</label>
+            <textarea id="message" placeholder="Tell us your vision, theme, or any special requests..."></textarea>
+          </div>
+
+          <button type="submit" class="form-submit">Send My Request →</button>
         </form>
       </div>
     </div>
-  </div>
+  </section>
 
-  <script src="js/app.js"></script>
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="logo">Video<span>Evite</span></a>
+        <p>Personalized video messages for weddings, luxury hotels, college admissions, and premier events. Making every
+          guest feel like the only one.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#occasions">Wedding Invitations</a></li>
+          <li><a href="#occasions">Hotel Welcome</a></li>
+          <li><a href="#occasions">College Admissions</a></li>
+          <li><a href="#occasions">Corporate Events</a></li>
+          <li><a href="#occasions">Custom Projects</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#samples">Sample Videos</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#order">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">YouTube</a></li>
+          <li><a href="#">WhatsApp</a></li>
+          <li><a href="#">hello@videoevite.com</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 VideoEvite. All rights reserved.</p>
+      <p style="color:rgba(250,247,242,0.2)">Crafted with care for unforgettable moments.</p>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Float Button -->
+  <a href="https://wa.me/91XXXXXXXXXX" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+      <path
+        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+    </svg>
+  </a>
+
+  <script>
+    // Play video on overlay click
+    function playVideo(overlay) {
+      const video = overlay.previousElementSibling;
+      overlay.classList.add('hidden');
+      video.play();
+    }
+
+    // Show overlay again if video is paused
+    document.querySelectorAll('.sample-video-wrap video').forEach(video => {
+      video.addEventListener('pause', () => {
+        const overlay = video.nextElementSibling;
+        if (overlay) overlay.classList.remove('hidden');
+      });
+    });
+    window.addEventListener('scroll', () => {
+      document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Intersection Observer for animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+
+    document.querySelectorAll('.fade-up, .step').forEach(el => observer.observe(el));
+
+    // Stagger steps
+    document.querySelectorAll('.step').forEach((step, i) => {
+      step.style.transitionDelay = `${i * 0.12}s`;
+    });
+
+    // Form handler
+    function handleSubmit(e) {
+      e.preventDefault();
+      const btn = e.target.querySelector('.form-submit');
+      btn.textContent = '✓ Request Sent! We\'ll contact you soon.';
+      btn.style.background = '#4CAF50';
+      btn.disabled = true;
+    }
+  </script>
 </body>
 
 </html>
