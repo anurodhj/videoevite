@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<head>
+    <title>COllege Admission Video</title>
+    <style>
+        :root {
+            --gold: #C9A84C;
+            --gold-light: #E8C97A;
+            --gold-pale: #F5EDD6;
+            --cream: #FAF7F2;
+            --black: #0D0C0A;
+            --charcoal: #1A1916;
+            --warm-gray: #6B6660;
+            --border: rgba(201, 168, 76, 0.25);
+            --font-serif: 'Cormorant Garamond', Georgia, serif;
+            --font-sans: 'Jost', sans-serif;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--black);
+            color: var(--cream);
+            font-family: var(--font-sans);
+            font-weight: 300;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 4rem 2rem;
+        }
+
+        video {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid rgba(201, 168, 76, 0.3);
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        /* Make video fill the viewport without causing scroll */
+        .responsive-video {
+            width: 100%;
+            height: auto;
+            max-height: 80vh;
+            /* leave some space for padding */
+            object-fit: contain;
+        }
+
+        video:hover {
+            transform: scale(1.02);
+            box-shadow: 0 25px 70px rgba(201, 168, 76, 0.15);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 2rem 1rem;
+            }
+
+            video {
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div
+        style="background-color:#0D0C0A; padding:20px 32px; border-bottom:2px solid #C9A84C; display:flex; align-items:center; justify-content:space-between; font-family:'Georgia',serif;">
+        <div style="display:flex; align-items:center; gap:14px;">
+            <div
+                style="width:40px; height:40px; border-radius:50%; border:1.5px solid #C9A84C; display:flex; align-items:center; justify-content:center;">
+                <div
+                    style="width:0; height:0; border-style:solid; border-width:7px 0 7px 12px; border-color:transparent transparent transparent #C9A84C; margin-left:3px;">
+                </div>
+            </div>
+            <div>
+                <div style="font-size:24px; font-weight:300; letter-spacing:2px; color:#FAF7F2; line-height:1;">
+                    <a href="https://videoevite.com" style="color: white;">Video</a><span
+                        style="color:#C9A84C;">Evite</span></a>
+                </div>
+                <div
+                    style="font-size:9px; letter-spacing:3px; text-transform:uppercase; color:rgba(250,247,242,0.4); margin-top:3px;">
+                    Personalized Video Messages
+                </div>
+            </div>
+        </div>
+        <div
+            style="font-size:9px; letter-spacing:2px; text-transform:uppercase; color:rgba(250,247,242,0.35); text-align:right; line-height:1.8;">
+            Weddings · Hotels<br>Admissions · Events
+        </div>
+    </div>
+    <center><video class="responsive-video" src="assets/hotel.mp4" autoplay controls></video></center>
+</body>
+
+</html>
