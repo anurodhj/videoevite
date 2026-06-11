@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UW-Milwuakee Chancellor T.Gibson</title>
+    <title>College Admissions</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -158,21 +158,28 @@
         }
 
         /* ── Video area ── */
-        .video-container {
+        .video-row {
             flex: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 3rem 2rem;
+            gap: 1.5rem;
+            padding: 2.5rem 2rem;
+        }
+
+        .video-cell {
+            flex: 1;
+            min-width: 0;
         }
 
         video {
-            max-width: 100%;
+            width: 100%;
             height: auto;
             border: 1px solid rgba(201, 168, 76, 0.3);
             border-radius: 12px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
             transition: transform 0.5s ease, box-shadow 0.5s ease;
+            display: block;
         }
 
         .responsive-video {
@@ -180,6 +187,28 @@
             height: auto;
             max-height: 82vh;
             object-fit: contain;
+        }
+
+        /* ── Video captions ── */
+        .video-caption {
+            text-align: center;
+            padding-top: 1rem;
+        }
+
+        .video-caption h3 {
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
+            font-weight: 400;
+            color: var(--cream);
+            letter-spacing: 0.04em;
+            margin-bottom: 0.3rem;
+        }
+
+        .video-caption p {
+            font-size: 0.72rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(250, 247, 242, 0.4);
         }
 
         video:hover {
@@ -204,7 +233,8 @@
                 letter-spacing: 1.5px;
             }
 
-            .video-container {
+            .video-row {
+                flex-direction: column;
                 padding: 2rem 1rem;
             }
 
@@ -230,17 +260,30 @@
         </a>
         <nav>
             <ul class="nav-links">
-                <li><a href="https://videoevite.com/#occasions">Weddings</a></li>
-                <li><a href="https://videoevite.com/#occasions">Hotels</a></li>
-                <li><a href="https://videoevite.com/#occasions">Admissions</a></li>
-                <li><a href="https://videoevite.com/#occasions">Events</a></li>
+                <li><a href="#">Weddings</a></li>
+                <li><a href="#">Hotels</a></li>
+                <li><a href="#">Admissions</a></li>
+                <li><a href="#">Events</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- ── Video ── -->
-    <div class="video-container">
-        <video class="responsive-video" src="assets/college.mp4" autoplay controls></video>
+    <!-- ── Videos (side by side) ── -->
+    <div class="video-row">
+        <div class="video-cell">
+            <video class="responsive-video" src="assets/college.mp4" controls></video>
+            <div class="video-caption">
+                <h3>UW-Milwaukee</h3>
+                <p>Chancellor T. Gibson</p>
+            </div>
+        </div>
+        <div class="video-cell">
+            <video class="responsive-video" src="https://anurodhj.github.io/vids/assets/roche.mp4" controls></video>
+            <div class="video-caption">
+                <h3>University of Rochester</h3>
+                <p>President's Message</p>
+            </div>
+        </div>
     </div>
 </body>
 
