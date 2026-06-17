@@ -1782,18 +1782,9 @@
             </div>
             <div class="sample-video-wrap">
               <!-- REPLACE src WITH YOUR ACTUAL VIDEO FILE PATH e.g. src="videos/wedding-sample.mp4" -->
-              <video controls poster="" preload="none">
+              <video controls preload="metadata" style="width:100%;display:block;">
                 <source src="assets/Phuket_Wedding.mp4" type="video/mp4">
               </video>
-              <div class="sample-overlay" onclick="playVideo(this)">
-                <div class="play-btn-large">
-                  <svg width="20" height="22" viewBox="0 0 20 22">
-                    <path d="M2 2L18 11L2 20V2Z" fill="none" stroke="#C9A84C" stroke-width="1.5"
-                      stroke-linejoin="round" />
-                  </svg>
-                </div>
-                <span class="video-label">Play Sample</span>
-              </div>
             </div>
             <div class="sample-info">
               <h3>Wedding Invitation</h3>
@@ -1811,18 +1802,9 @@
             </div>
             <div class="sample-video-wrap">
               <!-- REPLACE src WITH YOUR ACTUAL VIDEO FILE PATH e.g. src="videos/college-sample.mp4" -->
-              <video controls poster="" preload="none">
+              <video controls preload="metadata" style="width:100%;display:block;">
                 <source src="assets/college.mp4" type="video/mp4">
               </video>
-              <div class="sample-overlay" onclick="playVideo(this)">
-                <div class="play-btn-large">
-                  <svg width="20" height="22" viewBox="0 0 20 22">
-                    <path d="M2 2L18 11L2 20V2Z" fill="none" stroke="#C9A84C" stroke-width="1.5"
-                      stroke-linejoin="round" />
-                  </svg>
-                </div>
-                <span class="video-label">Play Sample</span>
-              </div>
             </div>
             <div class="sample-info">
               <h3>College Admission</h3>
@@ -1839,18 +1821,9 @@
             </div>
             <div class="sample-video-wrap">
               <!-- REPLACE src WITH YOUR ACTUAL VIDEO FILE PATH e.g. src="videos/hotel-sample.mp4" -->
-              <video controls poster="" preload="none">
+              <video controls preload="metadata" style="width:100%;display:block;">
                 <source src="assets/hotel.mp4" type="video/mp4">
               </video>
-              <div class="sample-overlay" onclick="playVideo(this)">
-                <div class="play-btn-large">
-                  <svg width="20" height="22" viewBox="0 0 20 22">
-                    <path d="M2 2L18 11L2 20V2Z" fill="none" stroke="#C9A84C" stroke-width="1.5"
-                      stroke-linejoin="round" />
-                  </svg>
-                </div>
-                <span class="video-label">Play Sample</span>
-              </div>
             </div>
             <div class="sample-info">
               <h3>Hotel Booking Confirmation</h3>
@@ -2039,7 +2012,7 @@
           <div class="price-tier">Essential</div>
           <div class="price-name">The Intimate</div>
           <div class="price-desc">Perfect for smaller gatherings where every detail matters.</div>
-          
+
           <div class="price-period">Up to 25 personalized videos</div>
           <div class="price-divider"></div>
           <ul class="price-features">
@@ -2057,7 +2030,7 @@
           <div class="price-tier">Signature</div>
           <div class="price-name">The Grand</div>
           <div class="price-desc">Our most beloved package for weddings and premium events.</div>
-          
+
           <div class="price-period">Up to 100 personalized videos</div>
           <div class="price-divider"></div>
           <ul class="price-features">
@@ -2310,19 +2283,6 @@
     const EMAILJS_TEMPLATE_OWNER = "template_tgcc71u";
 
     emailjs.init(EMAILJS_PUBLIC_KEY);
-
-    // ── VIDEO OVERLAY ──
-    function playVideo(overlay) {
-      const video = overlay.previousElementSibling;
-      overlay.classList.add('hidden');
-      video.play();
-    }
-    document.querySelectorAll('.sample-video-wrap video').forEach(video => {
-      video.addEventListener('pause', () => {
-        const overlay = video.nextElementSibling;
-        if (overlay) overlay.classList.remove('hidden');
-      });
-    });
 
     // ── STICKY NAV ──
     window.addEventListener('scroll', () => {
