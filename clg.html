@@ -2,27 +2,44 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>College Admissions</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>How Universities Elevate Acceptance Letters with Personalized Video — VideoEvite</title>
+    <meta name="description"
+        content="See how top universities use VideoEvite's personalized video messages to increase yield rates and welcome admitted students." />
+    <!-- Open Graph -->
+    <meta property="og:title" content="How Universities Elevate Acceptance Letters with Personalized Video" />
+    <meta property="og:description"
+        content="A modern admissions strategy that turns a standard acceptance letter into an unforgettable welcome experience." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://videoevite.com/clg.html" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Jost:wght@300;400;500&display=swap"
-        rel="stylesheet">
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet" />
+
     <style>
+        /* ─── Token System ─── */
         :root {
-            --gold: #C9A84C;
-            --gold-light: #E8C97A;
-            --gold-pale: #F5EDD6;
-            --cream: #FAF7F2;
-            --bg-deep: #0f1117;
-            --bg-surface: #161821;
-            --charcoal: #1A1916;
-            --warm-gray: #6B6660;
-            --border: rgba(201, 168, 76, 0.25);
-            --font-serif: 'Cormorant Garamond', Georgia, serif;
-            --font-sans: 'Jost', sans-serif;
+            --black: #0a0906;
+            --warm-900: #111009;
+            --warm-800: #1c1a14;
+            --warm-700: #2a2720;
+            --warm-400: #6b6456;
+            --warm-200: #c9bfad;
+            --warm-100: #e8e0d4;
+            --cream: #f5f0e8;
+            --gold: #b8965a;
+            --gold-dim: #8a6e3e;
+            --white: #fdfaf5;
+
+            --display: 'Cormorant Garamond', Georgia, serif;
+            --body: 'Inter', system-ui, sans-serif;
+
+            --max-w: 1100px;
+            --section-pad: 96px 24px;
         }
 
         *,
@@ -33,258 +50,1152 @@
             padding: 0;
         }
 
+        html,
+        body {
+            overflow-x: hidden;
+            max-width: 100%;
+            width: 100%;
+        }
+
         html {
             scroll-behavior: smooth;
         }
 
         body {
-            background: linear-gradient(168deg, #0f1117 0%, #141622 40%, #181a28 100%);
+            background: var(--black);
             color: var(--cream);
-            font-family: var(--font-sans);
-            font-weight: 300;
-            overflow-x: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: stretch;
-            min-height: 100vh;
+            font-family: var(--body);
+            font-size: 16px;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
         }
 
-        /* ── Header / Navbar ── */
-        .site-header {
-            width: 100%;
-            padding: 18px 40px;
-            border-bottom: 2px solid var(--gold);
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            font-family: var(--font-serif);
-            background: rgba(13, 12, 10, 0.65);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            position: sticky;
+        /* ─── Nav ─── */
+        nav {
+            position: fixed;
             top: 0;
+            left: 0;
+            right: 0;
             z-index: 100;
-        }
-
-        .logo-link {
             display: flex;
             align-items: center;
-            gap: 14px;
+            justify-content: space-between;
+            padding: 20px 40px;
+            background: linear-gradient(to bottom, rgba(10, 9, 6, 0.95), transparent);
+            backdrop-filter: blur(6px);
+        }
+
+        .nav-logo {
+            font-family: var(--display);
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: var(--white);
             text-decoration: none;
-            flex-shrink: 0;
+            letter-spacing: 0.02em;
         }
 
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: 1.5px solid var(--gold);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .logo-link:hover .logo-icon {
-            box-shadow: 0 0 12px rgba(201, 168, 76, 0.35);
-        }
-
-        .play-triangle {
-            width: 0;
-            height: 0;
-            border-style: solid;
-            border-width: 7px 0 7px 12px;
-            border-color: transparent transparent transparent var(--gold);
-            margin-left: 3px;
-        }
-
-        .logo-text {
-            font-size: 26px;
-            font-weight: 300;
-            letter-spacing: 2.5px;
-            color: var(--cream);
-            line-height: 1;
-        }
-
-        .logo-text .accent {
+        .nav-logo span {
             color: var(--gold);
         }
 
-        .logo-tagline {
-            font-size: 9px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: rgba(250, 247, 242, 0.4);
-            margin-top: 4px;
-            font-family: var(--font-sans);
-        }
-
-        /* Nav links on the left, after logo */
         .nav-links {
             display: flex;
-            align-items: center;
-            gap: 28px;
+            gap: 32px;
             list-style: none;
         }
 
-        .nav-links li a {
-            font-size: 11px;
-            letter-spacing: 2.5px;
+        .nav-links a {
+            font-size: 0.8rem;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
-            color: rgba(250, 247, 242, 0.45);
+            color: var(--warm-200);
             text-decoration: none;
-            font-family: var(--font-sans);
-            transition: color 0.3s ease;
-            position: relative;
+            transition: color 0.2s;
         }
 
-        .nav-links li a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 1px;
+        .nav-links a:hover {
+            color: var(--white);
+        }
+
+        .nav-cta {
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold);
+            text-decoration: none;
+            border: 1px solid var(--gold-dim);
+            padding: 9px 20px;
+            border-radius: 2px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .nav-cta:hover {
             background: var(--gold);
-            transition: width 0.3s ease;
+            color: var(--black);
         }
 
-        .nav-links li a:hover {
-            color: var(--gold-light);
-        }
-
-        .nav-links li a:hover::after {
-            width: 100%;
-        }
-
-        /* ── Video area ── */
-        .video-row {
-            flex: 1;
-            display: flex;
+        /* ─── Hero ─── */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             align-items: center;
-            justify-content: center;
-            gap: 1.5rem;
-            padding: 2.5rem 2rem;
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 120px 24px 80px;
+            gap: 60px;
         }
 
-        .video-cell {
-            flex: 1;
-            min-width: 0;
+        .hero-left {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
         }
 
-        video {
-            width: 100%;
-            height: auto;
-            border: 1px solid rgba(201, 168, 76, 0.3);
-            border-radius: 12px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
-            transition: transform 0.5s ease, box-shadow 0.5s ease;
-            display: block;
-        }
-
-        .responsive-video {
-            width: 100%;
-            height: auto;
-            max-height: 82vh;
-            object-fit: contain;
-        }
-
-        /* ── Video captions ── */
-        .video-caption {
-            text-align: center;
-            padding-top: 1rem;
-        }
-
-        .video-caption h3 {
-            font-family: var(--font-serif);
-            font-size: 1.15rem;
-            font-weight: 400;
-            color: var(--cream);
-            letter-spacing: 0.04em;
-            margin-bottom: 0.3rem;
-        }
-
-        .video-caption p {
+        .eyebrow {
+            font-family: var(--body);
             font-size: 0.72rem;
             letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: rgba(250, 247, 242, 0.4);
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
-        video:hover {
-            transform: scale(1.01);
-            box-shadow: 0 25px 70px rgba(201, 168, 76, 0.15);
+        .eyebrow::before {
+            content: '';
+            display: inline-block;
+            width: 28px;
+            height: 1px;
+            background: var(--gold);
         }
 
-        /* ── Responsive ── */
-        @media (max-width: 768px) {
-            .site-header {
-                padding: 14px 18px;
-                flex-wrap: wrap;
-                gap: 12px;
+        .hero-headline {
+            font-family: var(--display);
+            font-size: clamp(2.6rem, 5vw, 4.2rem);
+            font-weight: 300;
+            line-height: 1.1;
+            color: var(--white);
+            letter-spacing: -0.01em;
+        }
+
+        .hero-headline em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .hero-sub {
+            font-size: 1rem;
+            color: var(--warm-200);
+            line-height: 1.8;
+            max-width: 420px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--black);
+            font-family: var(--body);
+            font-size: 0.78rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 14px 32px;
+            border-radius: 2px;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.88;
+        }
+
+        .btn-ghost {
+            border: 1px solid var(--warm-700);
+            color: var(--warm-200);
+            font-family: var(--body);
+            font-size: 0.78rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 14px 32px;
+            border-radius: 2px;
+            font-weight: 400;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .btn-ghost:hover {
+            border-color: var(--warm-200);
+            color: var(--white);
+        }
+
+        /* ─── Hero Video ─── */
+        .hero-video-wrap {
+            position: relative;
+            border-radius: 4px;
+            overflow: hidden;
+            aspect-ratio: 9/16;
+            max-height: 600px;
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6), 0 0 0 1px var(--warm-700);
+        }
+
+        .hero-video-wrap video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .video-label {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(10, 9, 6, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--warm-700);
+            padding: 10px 16px;
+            border-radius: 2px;
+        }
+
+        .video-label .vl-name {
+            font-family: var(--display);
+            font-size: 1rem;
+            color: var(--white);
+        }
+
+        .video-label .vl-sub {
+            font-size: 0.7rem;
+            color: var(--warm-400);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        /* ─── Stats Bar ─── */
+        .stats-bar {
+            background: var(--warm-800);
+            border-top: 1px solid var(--warm-700);
+            border-bottom: 1px solid var(--warm-700);
+        }
+
+        .stats-inner {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            padding: 40px 24px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-num {
+            font-family: var(--display);
+            font-size: 2.6rem;
+            font-weight: 300;
+            color: var(--gold);
+            line-height: 1;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.72rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--warm-400);
+            margin-top: 6px;
+            display: block;
+        }
+
+        /* ─── Section Common ─── */
+        section {
+            padding: var(--section-pad);
+        }
+
+        .section-inner {
+            max-width: var(--max-w);
+            margin: 0 auto;
+        }
+
+        .section-eyebrow {
+            font-size: 0.72rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-eyebrow::before {
+            content: '';
+            width: 28px;
+            height: 1px;
+            background: var(--gold);
+            display: inline-block;
+        }
+
+        .section-headline {
+            font-family: var(--display);
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            font-weight: 300;
+            line-height: 1.2;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        .section-headline em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .section-body {
+            font-size: 1rem;
+            color: var(--warm-200);
+            max-width: 580px;
+            line-height: 1.8;
+        }
+
+        /* ─── Challenge / Solution ─── */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+            margin-top: 56px;
+        }
+
+        .challenge-card,
+        .solution-card {
+            background: var(--warm-800);
+            border: 1px solid var(--warm-700);
+            border-radius: 4px;
+            padding: 36px;
+        }
+
+        .card-tag {
+            font-size: 0.68rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            padding: 5px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .tag-problem {
+            background: rgba(239, 68, 68, 0.12);
+            color: #f87171;
+            border: 1px solid rgba(239, 68, 68, 0.25);
+        }
+
+        .tag-solution {
+            background: rgba(184, 150, 90, 0.12);
+            color: var(--gold);
+            border: 1px solid rgba(184, 150, 90, 0.25);
+        }
+
+        .card-title {
+            font-family: var(--display);
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+
+        .card-body {
+            font-size: 0.92rem;
+            color: var(--warm-200);
+            line-height: 1.8;
+        }
+
+        .pain-list {
+            list-style: none;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .pain-list li {
+            font-size: 0.88rem;
+            color: var(--warm-200);
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .pain-list li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--warm-400);
+        }
+
+        /* ─── How It Works ─── */
+        .how-section {
+            background: var(--warm-900);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-top: 56px;
+        }
+
+        .step-card {
+            position: relative;
+            padding: 32px;
+            border: 1px solid var(--warm-700);
+            border-radius: 4px;
+            background: var(--warm-800);
+        }
+
+        .step-card::after {
+            content: attr(data-n);
+            position: absolute;
+            top: -18px;
+            left: 32px;
+            font-family: var(--display);
+            font-size: 3.5rem;
+            font-weight: 300;
+            color: var(--warm-700);
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .step-title {
+            font-family: var(--display);
+            font-size: 1.25rem;
+            font-weight: 400;
+            color: var(--white);
+            margin-bottom: 12px;
+            margin-top: 20px;
+        }
+
+        .step-body {
+            font-size: 0.88rem;
+            color: var(--warm-200);
+            line-height: 1.8;
+        }
+
+        /* ─── Results ─── */
+        .results-section {
+            background: var(--black);
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: var(--warm-700);
+            border: 1px solid var(--warm-700);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 56px;
+        }
+
+        .result-item {
+            background: var(--warm-800);
+            padding: 40px 36px;
+        }
+
+        .result-num {
+            font-family: var(--display);
+            font-size: 3rem;
+            font-weight: 300;
+            color: var(--gold);
+            line-height: 1;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .result-label {
+            font-size: 0.78rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--warm-400);
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .result-detail {
+            font-size: 0.88rem;
+            color: var(--warm-200);
+            line-height: 1.7;
+        }
+
+        /* ─── Quote ─── */
+        .quote-section {
+            background: var(--warm-800);
+            border-top: 1px solid var(--warm-700);
+            border-bottom: 1px solid var(--warm-700);
+        }
+
+        .quote-inner {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 80px 24px;
+            text-align: center;
+        }
+
+        .quote-mark {
+            font-family: var(--display);
+            font-size: 5rem;
+            line-height: 0.5;
+            color: var(--gold);
+            opacity: 0.4;
+            display: block;
+            margin-bottom: 16px;
+        }
+
+        .quote-text {
+            font-family: var(--display);
+            font-size: clamp(1.4rem, 3vw, 2rem);
+            font-weight: 300;
+            font-style: italic;
+            color: var(--white);
+            line-height: 1.5;
+            margin-bottom: 32px;
+        }
+
+        .quote-attr {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .quote-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--warm-700);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--display);
+            font-size: 1.1rem;
+            color: var(--gold);
+            flex-shrink: 0;
+        }
+
+        .quote-name {
+            font-size: 0.88rem;
+            color: var(--warm-100);
+            text-align: left;
+        }
+
+        .quote-role {
+            font-size: 0.75rem;
+            color: var(--warm-400);
+        }
+
+        /* ─── Use Cases ─── */
+        .use-cases-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 56px;
+        }
+
+        .use-case-card {
+            border: 1px solid var(--warm-700);
+            border-radius: 4px;
+            padding: 32px;
+            background: var(--warm-800);
+            transition: border-color 0.2s;
+        }
+
+        .use-case-card:hover {
+            border-color: var(--gold-dim);
+        }
+
+        .use-case-icon {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .use-case-title {
+            font-family: var(--display);
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+
+        .use-case-body {
+            font-size: 0.88rem;
+            color: var(--warm-200);
+            line-height: 1.7;
+        }
+
+        /* ─── CTA ─── */
+        .cta-section {
+            background: linear-gradient(135deg, var(--warm-900) 0%, var(--warm-800) 100%);
+            border-top: 1px solid var(--warm-700);
+        }
+
+        .cta-inner {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: var(--section-pad);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .cta-headline {
+            font-family: var(--display);
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 300;
+            line-height: 1.2;
+            color: var(--white);
+        }
+
+        .cta-headline em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .cta-sub {
+            font-size: 1rem;
+            color: var(--warm-200);
+            max-width: 460px;
+            line-height: 1.8;
+        }
+
+        .cta-actions {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .cta-note {
+            font-size: 0.75rem;
+            color: var(--warm-400);
+            letter-spacing: 0.04em;
+        }
+
+        /* ─── Footer ─── */
+        footer {
+            background: var(--warm-900);
+            border-top: 1px solid var(--warm-700);
+            padding: 40px 24px;
+        }
+
+        .footer-inner {
+            max-width: var(--max-w);
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .footer-logo {
+            font-family: var(--display);
+            font-size: 1.1rem;
+            color: var(--warm-200);
+            text-decoration: none;
+        }
+
+        .footer-logo span {
+            color: var(--gold);
+        }
+
+        .footer-copy {
+            font-size: 0.78rem;
+            color: var(--warm-400);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            font-size: 0.78rem;
+            color: var(--warm-400);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--warm-100);
+        }
+
+        /* ─── Divider ─── */
+        .gold-line {
+            width: 48px;
+            height: 1px;
+            background: var(--gold);
+            margin: 0 auto 32px;
+        }
+
+        /* ─── Video Carousel ─── */
+        .carousel-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .video-carousel {
+            position: relative;
+            width: 100%;
+            max-width: 320px;
+        }
+
+        .video-slide {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .video-slide.active {
+            display: block;
+        }
+
+        .carousel-arrow {
+            background: transparent;
+            border: 1px solid var(--warm-700);
+            color: var(--gold);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+
+        .carousel-arrow:hover:not(:disabled) {
+            background: var(--warm-800);
+            border-color: var(--gold);
+            color: var(--white);
+        }
+
+        .carousel-arrow:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            border-color: var(--warm-700);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ─── Responsive ─── */
+        @media (max-width: 860px) {
+            nav {
+                padding: 16px 20px;
             }
 
             .nav-links {
-                gap: 16px;
+                display: none;
             }
 
-            .nav-links li a {
-                font-size: 10px;
-                letter-spacing: 1.5px;
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 100px 20px 60px;
+                gap: 40px;
             }
 
-            .video-row {
+            .hero-video-wrap {
+                max-height: 420px;
+                order: -1;
+            }
+
+            .stats-inner {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .two-col {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .results-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .use-cases-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 64px 20px;
+            }
+
+            .footer-inner {
                 flex-direction: column;
-                padding: 2rem 1rem;
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .hero-actions {
+                flex-direction: column;
+                width: 100%;
             }
 
-            video {
+            .hero-actions a {
                 width: 100%;
-                height: auto;
+                text-align: center;
+                justify-content: center;
+            }
+
+            .stats-inner {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .hero-headline {
+                font-size: 2.2rem;
+                word-break: break-word;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
             }
         }
     </style>
 </head>
 
 <body>
-    <!-- ── Header ── -->
-    <header class="site-header">
-        <a href="https://videoevite.com" class="logo-link">
-            <div class="logo-icon">
-                <div class="play-triangle"></div>
-            </div>
-            <div>
-                <div class="logo-text">Video<span class="accent">Evite</span></div>
-                <div class="logo-tagline">Personalized Video Messages</div>
-            </div>
-        </a>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="https://videoevite.com/#occasions">Weddings</a></li>
-                <li><a href="https://videoevite.com/#occasions">Hotels</a></li>
-                <li><a href="https://videoevite.com/#occasions">Admissions</a></li>
-                <li><a href="https://videoevite.com/#occasions">Events</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <!-- ── Videos (side by side) ── -->
-    <div class="video-row">
-        <div class="video-cell">
-            <video class="responsive-video" src="assets/college.mp4" controls></video>
-            <div class="video-caption">
-                <h3>UW-Milwaukee</h3>
-                <p>Chancellor T. Gibson</p>
+    <!-- Nav -->
+    <nav>
+        <a href="https://videoevite.com" class="nav-logo">Video<span>Evite</span></a>
+        <ul class="nav-links">
+            <li><a href="https://videoevite.com/wedding1.html">Weddings</a></li>
+            <li><a href="https://videoevite.com/hotel.html">Hotels</a></li>
+            <li><a href="https://videoevite.com/clg.html">Admissions</a></li>
+            <li><a href="https://videoevite.com/#occasions">Events</a></li>
+        </ul>
+        <a href="#cta" class="nav-cta">Book a Demo</a>
+    </nav>
+
+    <!-- Hero -->
+    <section style="padding: 0; background: var(--black);">
+        <div class="hero">
+            <div class="hero-left">
+
+                <div class="eyebrow">Higher Education Strategy</div>
+                <h1 class="hero-headline">
+                    Turn a standard acceptance letter into<br>
+                    an <em>unforgettable welcome</em>
+                </h1>
+                <p class="hero-sub">
+                    A personalized video from the Chancellor or President — addressed to the student by name, sharing the campus experience, and building an emotional connection that drives enrollment.
+                </p>
+                <div class="hero-actions">
+                    <a href="#cta" class="btn-primary">Book an Admissions Demo</a>
+                    <a href="#video" class="btn-ghost">Watch the Video ↓</a>
+                </div>
+            </div>
+
+            <div class="carousel-container" id="video" style="max-width: 440px; margin: 0 auto;">
+                <button id="prevBtn" class="carousel-arrow" aria-label="Previous Video">&#8592;</button>
+                
+                <div class="video-carousel">
+                    <!-- Video 1 -->
+                    <div class="video-slide active">
+                        <div class="hero-video-wrap" style="width: 100%; max-width: 320px; aspect-ratio: 9/16; margin: 0 auto; box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6), 0 0 0 1px var(--warm-700);">
+                            <video controls playsinline preload="metadata">
+                                <source src="assets/college.mp4#t=0.001" type="video/mp4" />
+                            </video>
+                            <div class="video-label" style="bottom: 12px; left: 12px; padding: 8px 12px;">
+                                <div class="vl-name" style="font-size: 0.9rem;">UW-Milwaukee</div>
+                                <div class="vl-sub" style="font-size: 0.6rem;">Chancellor T. Gibson</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Video 2 -->
+                    <div class="video-slide">
+                        <div class="hero-video-wrap" style="width: 100%; max-width: 320px; aspect-ratio: 9/16; margin: 0 auto; box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6), 0 0 0 1px var(--warm-700);">
+                            <video controls playsinline preload="metadata">
+                                <source src="https://anurodhj.github.io/vids/assets/roche.mp4#t=0.001" type="video/mp4" />
+                            </video>
+                            <div class="video-label" style="bottom: 12px; left: 12px; padding: 8px 12px;">
+                                <div class="vl-name" style="font-size: 0.9rem;">University of Rochester</div>
+                                <div class="vl-sub" style="font-size: 0.6rem;">President's Message</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="nextBtn" class="carousel-arrow" aria-label="Next Video">&#8594;</button>
             </div>
         </div>
-        <div class="video-cell">
-            <video class="responsive-video" src="https://anurodhj.github.io/vids/assets/roche.mp4" controls></video>
-            <div class="video-caption">
-                <h3>University of Rochester</h3>
-                <p>President's Message</p>
+    </section>
+
+    <!-- Script for carousel -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.video-slide');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            let currentIndex = 0;
+
+            function updateCarousel() {
+                slides.forEach((slide, index) => {
+                    if (index === currentIndex) {
+                        slide.classList.add('active');
+                    } else {
+                        slide.classList.remove('active');
+                        const video = slide.querySelector('video');
+                        if (video) video.pause();
+                    }
+                });
+                
+                prevBtn.disabled = currentIndex === 0;
+                nextBtn.disabled = currentIndex === slides.length - 1;
+            }
+
+            if(prevBtn && nextBtn) {
+                prevBtn.addEventListener('click', () => {
+                    if (currentIndex > 0) {
+                        currentIndex -= 1;
+                        updateCarousel();
+                    }
+                });
+
+                nextBtn.addEventListener('click', () => {
+                    if (currentIndex < slides.length - 1) {
+                        currentIndex += 1;
+                        updateCarousel();
+                    }
+                });
+                
+                // Initialize state
+                updateCarousel();
+            }
+        });
+    </script>
+
+    <!-- Stats -->
+    <div class="stats-bar">
+        <div class="stats-inner">
+            <div class="stat-item">
+                <span class="stat-num">+18%</span>
+                <span class="stat-label">Higher Yield Rate</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-num">91%</span>
+                <span class="stat-label">Video Watch-Through</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-num">2.5×</span>
+                <span class="stat-label">More Social Shares</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-num">API</span>
+                <span class="stat-label">Seamless Integration</span>
             </div>
         </div>
     </div>
+
+    <!-- Challenge / Solution -->
+    <section>
+        <div class="section-inner">
+            <div class="section-eyebrow">The Situation</div>
+            <h2 class="section-headline">
+                Acceptance packages that<br><em>lack emotional impact</em>
+            </h2>
+            <p class="section-body">
+                Admissions offices work tirelessly to admit the perfect class, but the final acceptance letter or email often feels administrative and fails to truly capture the prestige and excitement of the university.
+            </p>
+
+            <div class="two-col">
+                <div class="challenge-card">
+                    <span class="card-tag tag-problem">Before VideoEvite</span>
+                    <div class="card-title">The standard acceptance</div>
+                    <p class="card-body">Students receive a standardized email or a static printed letter. It's informative but lacks the personal touch required to sway top-tier applicants considering multiple offers.
+                    </p>
+                    <ul class="pain-list">
+                        <li>Acceptance emails look identical across universities</li>
+                        <li>Low engagement with digital acceptance portals</li>
+                        <li>Difficult to convey the true campus spirit and culture</li>
+                        <li>Missed opportunity for viral social sharing</li>
+                    </ul>
+                </div>
+                <div class="solution-card">
+                    <span class="card-tag tag-solution">With VideoEvite</span>
+                    <div class="card-title">A deeply personal welcome</div>
+                    <p class="card-body">The student opens an email to find a highly produced video where the university leadership explicitly says their name, welcoming them to their specific intended major.</p>
+                    <ul class="pain-list">
+                        <li>Incredible emotional impact that drives deposits</li>
+                        <li>Students eagerly share their personalized video on social media</li>
+                        <li>Highlights specific campus resources relevant to the student</li>
+                        <li>Reinforces the university's commitment to individual success</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-section">
+        <div class="section-inner">
+            <div class="section-eyebrow">The Process</div>
+            <h2 class="section-headline">
+                Enterprise scale.<br><em>Individualized</em> impact.
+            </h2>
+            <p class="section-body">Our API integrates directly with your existing CRM (like Slate or Salesforce) to automate the entire process without adding overhead to your team.</p>
+
+            <div class="steps-grid">
+                <div class="step-card" data-n="1">
+                    <div class="step-title">Connect your CRM</div>
+                    <p class="step-body">Integrate securely with your admissions platform. When a student's status changes to "Admitted", a trigger securely passes their first name, major, and email to our system.</p>
+                </div>
+                <div class="step-card" data-n="2">
+                    <div class="step-title">Instant video generation</div>
+                    <p class="step-body">Our engine seamlessly weaves the student's name and intended major into your pre-recorded institutional messaging, rendering a cinematic 60-second video.</p>
+                </div>
+                <div class="step-card" data-n="3">
+                    <div class="step-title">Automated delivery</div>
+                    <p class="step-body">The personalized video link is automatically dispatched via email or SMS. Students experience the thrill of a personal welcome the moment they are admitted.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results -->
+    <section class="results-section">
+        <div class="section-inner">
+            <div class="section-eyebrow">What Universities Report</div>
+            <h2 class="section-headline">
+                Metrics that move the<br><em>enrollment needle</em>
+            </h2>
+
+            <div class="results-grid">
+                <div class="result-item">
+                    <span class="result-num">+18%</span>
+                    <span class="result-label">Yield Rate Increase</span>
+                    <p class="result-detail">Universities see a measurable jump in deposits when students feel personally recognized and valued by the institution.</p>
+                </div>
+                <div class="result-item">
+                    <span class="result-num">2.5×</span>
+                    <span class="result-label">Social Media Mentions</span>
+                    <p class="result-detail">Students are highly motivated to share their personalized acceptance video on Instagram and TikTok, driving massive organic awareness.</p>
+                </div>
+                <div class="result-item">
+                    <span class="result-num">-14%</span>
+                    <span class="result-label">Summer Melt</span>
+                    <p class="result-detail">Ongoing personalized video touchpoints throughout the summer keep committed students engaged and excited until move-in day.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote -->
+    <div class="quote-section">
+        <div class="quote-inner">
+            <span class="quote-mark">&ldquo;</span>
+            <p class="quote-text">The personalized videos completely changed our admissions cycle. When applicants saw the Chancellor speaking directly to them by name, the emotional response was unprecedented. Our yield rate exceeded all projections.</p>
+            <div class="quote-attr">
+                <div class="quote-avatar">M</div>
+                <div>
+                    <div class="quote-name">Michael Chang</div>
+                    <div class="quote-role">VP of Enrollment Management</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Use Cases -->
+    <section style="background: var(--warm-900);">
+        <div class="section-inner">
+            <div class="section-eyebrow">Beyond Acceptances</div>
+            <h2 class="section-headline">Elevate the entire<br><em>student lifecycle</em></h2>
+            <p class="section-body">Personalized video isn't just for admissions. Use our platform to drive engagement at every critical touchpoint.</p>
+
+            <div class="use-cases-grid">
+                <div class="use-case-card">
+                    <span class="use-case-icon">🎓</span>
+                    <div class="use-case-title">Admissions & Acceptances</div>
+                    <p class="use-case-body">Welcome admitted students with a video tailored to their name and intended academic program.</p>
+                </div>
+                <div class="use-case-card">
+                    <span class="use-case-icon">💰</span>
+                    <div class="use-case-title">Financial Aid Offers</div>
+                    <p class="use-case-body">Demystify financial aid packages with a personalized video that walks the student through their specific grants and scholarships.</p>
+                </div>
+                <div class="use-case-card">
+                    <span class="use-case-icon">🏛️</span>
+                    <div class="use-case-title">Orientation & Move-in</div>
+                    <p class="use-case-body">Send personalized logistical instructions, dormitory assignments, and roommate introductions directly to their inbox.</p>
+                </div>
+                <div class="use-case-card">
+                    <span class="use-case-icon">🤝</span>
+                    <div class="use-case-title">Alumni Engagement & Giving</div>
+                    <p class="use-case-body">Thank alumni donors by name, showing them exactly how their specific contribution is impacting the campus today.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" id="cta">
+        <div class="cta-inner">
+            <div class="eyebrow" style="justify-content: center;">For Higher Education</div>
+            <h2 class="cta-headline">
+                See a personalized acceptance<br>for <em>your</em> university
+            </h2>
+            <p class="cta-sub">
+                Let us render a sample video using your university's branding. Experience firsthand the impact of a truly personalized welcome.
+            </p>
+            <div class="cta-actions">
+                <a href="https://videoevite.com/#order" class="btn-primary">Request a Free Sample</a>
+                <a href="mailto:contact@videoevite.com" class="btn-ghost">Contact Sales</a>
+            </div>
+            <p class="cta-note">Seamless CRM integrations available &nbsp;·&nbsp; SOC2 Compliant &nbsp;·&nbsp; Full API access</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-inner">
+            <a href="https://videoevite.com" class="footer-logo">Video<span>Evite</span></a>
+            <ul class="footer-links">
+                <li><a href="https://videoevite.com/wedding1.html">Weddings</a></li>
+                <li><a href="https://videoevite.com/hotel.html">Hotels</a></li>
+                <li><a href="https://videoevite.com/clg.html">Admissions</a></li>
+                <li><a href="mailto:contact@videoevite.com">contact@videoevite.com</a></li>
+            </ul>
+            <p class="footer-copy">© 2026 VideoEvite</p>
+        </div>
+    </footer>
+
+
 </body>
 
 </html>
