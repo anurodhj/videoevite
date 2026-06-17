@@ -32,6 +32,13 @@
       --font-sans: 'Jost', sans-serif;
     }
 
+    html,
+    body {
+      overflow-x: hidden !important;
+      max-width: 100% !important;
+      width: 100%;
+    }
+
     html {
       scroll-behavior: smooth;
     }
@@ -41,7 +48,7 @@
       color: var(--cream);
       font-family: var(--font-sans);
       font-weight: 300;
-      overflow-x: hidden;
+      position: relative;
     }
 
     /* ── NAV ── */
@@ -1241,6 +1248,7 @@
       font-size: 0.82rem;
       color: rgba(250, 247, 242, 0.5);
       line-height: 1.6;
+      overflow-wrap: anywhere;
     }
 
     .contact-strip strong {
@@ -1419,6 +1427,28 @@
       color: rgba(250, 247, 242, 0.25);
     }
 
+    .whatsapp-float {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: #25D366;
+      color: white;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+      z-index: 200;
+      text-decoration: none;
+      transition: transform 0.3s;
+      font-size: 1.5rem;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+    }
 
     /* ── SAMPLES SECTION ── */
     .samples-section {
@@ -1641,11 +1671,19 @@
 
     @media (max-width: 600px) {
       .hero-title {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
+        word-break: break-word;
       }
 
       .hero-actions {
         flex-direction: column;
+        width: 100%;
+      }
+
+      .hero-actions a {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
       }
 
       .cards-scroll {
@@ -1660,6 +1698,385 @@
 
       footer {
         padding: 3rem 1.5rem;
+      }
+
+      .form-card {
+        padding: 2rem 1.2rem;
+      }
+
+      .form-steps {
+        flex-wrap: wrap;
+        gap: 1rem 0;
+      }
+
+      .step-connector {
+        margin: 0 0.4rem;
+      }
+
+      .form-step span {
+        font-size: 0.65rem;
+      }
+    }
+
+    /* --- Premium interaction upgrade --- */
+    :root {
+      --premium-shadow: 0 28px 90px rgba(0, 0, 0, 0.42);
+      --premium-glow: 0 0 34px rgba(232, 201, 122, 0.18);
+      --ease-luxury: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        linear-gradient(115deg, rgba(232, 201, 122, 0.06), transparent 28%, rgba(201, 168, 76, 0.045) 72%, transparent),
+        radial-gradient(circle at var(--spot-x, 50%) var(--spot-y, 20%), rgba(232, 201, 122, 0.12), transparent 34rem);
+      opacity: 0.9;
+      transition: opacity 0.5s ease;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image:
+        linear-gradient(rgba(250, 247, 242, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(250, 247, 242, 0.025) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: linear-gradient(to bottom, transparent, black 18%, black 72%, transparent);
+    }
+
+    nav,
+    section,
+    footer {
+      position: relative;
+      z-index: 1;
+    }
+
+    nav {
+      left: 50%;
+      right: auto;
+      top: 1rem;
+      width: min(1180px, calc(100% - 2rem));
+      border: 1px solid rgba(201, 168, 76, 0.14);
+      border-radius: 999px;
+      background: rgba(13, 12, 10, 0.64);
+      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.22);
+      backdrop-filter: blur(22px);
+      transform: translateX(-50%);
+    }
+
+    nav.scrolled {
+      background: rgba(13, 12, 10, 0.88);
+      box-shadow: 0 20px 70px rgba(0, 0, 0, 0.34);
+    }
+
+    .logo,
+    .nav-links a,
+    .nav-cta,
+    .btn-primary,
+    .btn-ghost,
+    .btn-price,
+    .form-submit,
+    .btn-next,
+    .btn-back {
+      transition:
+        transform 0.45s var(--ease-luxury),
+        color 0.35s ease,
+        background 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.45s var(--ease-luxury),
+        opacity 0.35s ease;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 0.35rem;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-light), transparent);
+      transform: translateX(-50%) scaleX(0);
+      transform-origin: center;
+      transition: transform 0.45s var(--ease-luxury);
+    }
+
+    .nav-links a:hover::after {
+      transform: translateX(-50%) scaleX(1);
+    }
+
+    .nav-cta,
+    .btn-primary,
+    .btn-price,
+    .form-submit,
+    .btn-next {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-cta::before,
+    .btn-primary::before,
+    .btn-price::before,
+    .form-submit::before,
+    .btn-next::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      z-index: -1;
+      background: linear-gradient(110deg, transparent 0%, rgba(255, 255, 255, 0.55) 45%, transparent 62%);
+      transform: translateX(-120%);
+      transition: transform 0.72s var(--ease-luxury);
+    }
+
+    .nav-cta:hover,
+    .btn-primary:hover,
+    .btn-price:hover,
+    .form-submit:hover,
+    .btn-next:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px rgba(201, 168, 76, 0.22), var(--premium-glow);
+    }
+
+    .nav-cta:hover::before,
+    .btn-primary:hover::before,
+    .btn-price:hover::before,
+    .form-submit:hover::before,
+    .btn-next:hover::before {
+      transform: translateX(120%);
+    }
+
+    .btn-ghost:hover,
+    .btn-back:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.18);
+    }
+
+    .hero {
+      background:
+        radial-gradient(circle at 50% 42%, rgba(232, 201, 122, 0.09), transparent 34rem),
+        linear-gradient(180deg, var(--black), #16120b 52%, var(--black));
+    }
+
+    .hero-lines::before,
+    .hero-lines::after {
+      animation: orbitGlow 16s linear infinite;
+      box-shadow: inset 0 0 44px rgba(201, 168, 76, 0.025);
+    }
+
+    .hero-lines::after {
+      animation-duration: 24s;
+      animation-direction: reverse;
+    }
+
+    .hero-title {
+      text-shadow: 0 18px 70px rgba(0, 0, 0, 0.42);
+    }
+
+    .hero-title em {
+      background: linear-gradient(110deg, var(--gold), #fff2b9 48%, var(--gold));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-eyebrow,
+    .section-eyebrow {
+      text-shadow: 0 0 22px rgba(232, 201, 122, 0.28);
+    }
+
+    .use-card,
+    .price-card,
+    .testi-card,
+    .sample-card,
+    .form-card,
+    .stat-box {
+      transition:
+        transform 0.55s var(--ease-luxury),
+        border-color 0.45s ease,
+        background 0.45s ease,
+        box-shadow 0.55s var(--ease-luxury),
+        filter 0.45s ease;
+      will-change: transform;
+    }
+
+    .use-card::after,
+    .price-card::after,
+    .testi-card::after,
+    .sample-card::after,
+    .form-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0;
+      background: radial-gradient(circle at var(--card-x, 50%) var(--card-y, 30%), rgba(255, 244, 198, 0.16), transparent 13rem);
+      transition: opacity 0.35s ease;
+    }
+
+    .use-card:hover,
+    .price-card:hover,
+    .testi-card:hover,
+    .sample-card:hover,
+    .form-card:hover,
+    .stat-box:hover {
+      transform: translateY(-10px);
+      border-color: rgba(232, 201, 122, 0.58);
+      box-shadow: var(--premium-shadow), var(--premium-glow);
+    }
+
+    .use-card:hover::after,
+    .price-card:hover::after,
+    .testi-card:hover::after,
+    .sample-card:hover::after,
+    .form-card:hover::after {
+      opacity: 1;
+    }
+
+    .price-card.featured {
+      box-shadow: 0 26px 90px rgba(201, 168, 76, 0.22);
+      transform: translateY(-8px);
+    }
+
+    .price-card.featured:hover {
+      transform: translateY(-16px) scale(1.015);
+      box-shadow: 0 34px 110px rgba(201, 168, 76, 0.32);
+    }
+
+    .sample-video-wrap {
+      border-radius: 2px;
+      box-shadow: 0 22px 70px rgba(0, 0, 0, 0.3);
+      transform: translateZ(0);
+      transition: transform 0.65s var(--ease-luxury), box-shadow 0.65s var(--ease-luxury);
+    }
+
+    .sample-card:hover .sample-video-wrap {
+      transform: scale(1.025);
+      box-shadow: 0 32px 100px rgba(0, 0, 0, 0.42), var(--premium-glow);
+    }
+
+    .sample-video-wrap video {
+      transition: filter 0.55s ease, transform 0.65s var(--ease-luxury);
+    }
+
+    .sample-card:hover video {
+      filter: saturate(1.12) contrast(1.05) brightness(1.05);
+      transform: scale(1.035);
+    }
+
+    input,
+    select,
+    textarea {
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, transform 0.3s ease;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      box-shadow: 0 0 0 4px rgba(201, 168, 76, 0.1), 0 14px 38px rgba(0, 0, 0, 0.18);
+      transform: translateY(-2px);
+    }
+
+    .fade-up {
+      transform: translateY(34px) scale(0.985);
+      filter: blur(8px);
+      transition:
+        opacity 0.85s var(--ease-luxury),
+        transform 0.85s var(--ease-luxury),
+        filter 0.85s var(--ease-luxury);
+    }
+
+    .fade-up.visible {
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+
+    .premium-cursor {
+      position: fixed;
+      z-index: 9999;
+      width: 18px;
+      height: 18px;
+      border: 1px solid rgba(232, 201, 122, 0.8);
+      border-radius: 50%;
+      pointer-events: none;
+      opacity: 0;
+      transform: translate(-50%, -50%);
+      transition: width 0.25s ease, height 0.25s ease, opacity 0.25s ease, border-color 0.25s ease;
+      mix-blend-mode: screen;
+    }
+
+    .premium-cursor.is-hovering {
+      width: 54px;
+      height: 54px;
+      border-color: rgba(232, 201, 122, 0.38);
+      background: rgba(232, 201, 122, 0.07);
+    }
+
+    @keyframes orbitGlow {
+      from {
+        transform: translate(-50%, -50%) rotate(0deg) scale(1);
+      }
+
+      50% {
+        transform: translate(-50%, -50%) rotate(180deg) scale(1.035);
+      }
+
+      to {
+        transform: translate(-50%, -50%) rotate(360deg) scale(1);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .premium-cursor {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        top: 0;
+        left: 0;
+        width: 100%;
+        border-radius: 0;
+        transform: none;
+        padding: 1rem 1.5rem;
+      }
+
+      .premium-cursor {
+        display: none;
+      }
+
+      .use-card:hover,
+      .price-card:hover,
+      .testi-card:hover,
+      .sample-card:hover,
+      .form-card:hover,
+      .stat-box:hover,
+      .price-card.featured,
+      .price-card.featured:hover {
+        transform: none;
       }
     }
   </style>
@@ -1782,9 +2199,18 @@
             </div>
             <div class="sample-video-wrap">
               <!-- REPLACE src WITH YOUR ACTUAL VIDEO FILE PATH e.g. src="videos/wedding-sample.mp4" -->
-              <video controls preload="metadata" style="width:100%;display:block;">
-                <source src="assets/Phuket_Wedding.mp4" type="video/mp4">
+              <video controls preload="metadata">
+                <source src="assets/Phuket_Wedding.mp4#t=0.001" type="video/mp4">
               </video>
+              <div class="sample-overlay" onclick="playVideo(this)">
+                <div class="play-btn-large">
+                  <svg width="20" height="22" viewBox="0 0 20 22">
+                    <path d="M2 2L18 11L2 20V2Z" fill="none" stroke="#C9A84C" stroke-width="1.5"
+                      stroke-linejoin="round" />
+                  </svg>
+                </div>
+                <span class="video-label">Play Sample</span>
+              </div>
             </div>
             <div class="sample-info">
               <h3>Wedding Invitation</h3>
@@ -1802,9 +2228,18 @@
             </div>
             <div class="sample-video-wrap">
               <!-- REPLACE src WITH YOUR ACTUAL VIDEO FILE PATH e.g. src="videos/college-sample.mp4" -->
-              <video controls preload="metadata" style="width:100%;display:block;">
-                <source src="assets/college.mp4" type="video/mp4">
+              <video controls preload="metadata">
+                <source src="assets/college.mp4#t=0.001" type="video/mp4">
               </video>
+              <div class="sample-overlay" onclick="playVideo(this)">
+                <div class="play-btn-large">
+                  <svg width="20" height="22" viewBox="0 0 20 22">
+                    <path d="M2 2L18 11L2 20V2Z" fill="none" stroke="#C9A84C" stroke-width="1.5"
+                      stroke-linejoin="round" />
+                  </svg>
+                </div>
+                <span class="video-label">Play Sample</span>
+              </div>
             </div>
             <div class="sample-info">
               <h3>College Admission</h3>
@@ -1821,9 +2256,18 @@
             </div>
             <div class="sample-video-wrap">
               <!-- REPLACE src WITH YOUR ACTUAL VIDEO FILE PATH e.g. src="videos/hotel-sample.mp4" -->
-              <video controls preload="metadata" style="width:100%;display:block;">
-                <source src="assets/hotel.mp4" type="video/mp4">
+              <video controls preload="metadata">
+                <source src="assets/hotel.mp4#t=0.001" type="video/mp4">
               </video>
+              <div class="sample-overlay" onclick="playVideo(this)">
+                <div class="play-btn-large">
+                  <svg width="20" height="22" viewBox="0 0 20 22">
+                    <path d="M2 2L18 11L2 20V2Z" fill="none" stroke="#C9A84C" stroke-width="1.5"
+                      stroke-linejoin="round" />
+                  </svg>
+                </div>
+                <span class="video-label">Play Sample</span>
+              </div>
             </div>
             <div class="sample-info">
               <h3>Hotel Booking Confirmation</h3>
@@ -2111,12 +2555,12 @@
             <div class="form-row">
               <div class="form-group">
                 <label for="fname">Your Name <span class="req">*</span></label>
-                <input type="text" id="fname" placeholder="Anjali Kapoor" autocomplete="name">
+                <input type="text" id="fname" placeholder="Alex Cooper" autocomplete="name">
                 <span class="field-error" id="err-fname"></span>
               </div>
               <div class="form-group">
                 <label for="phone">WhatsApp Number <span class="req">*</span></label>
-                <input type="tel" id="phone" placeholder="+91 98765 43210" autocomplete="tel">
+                <input type="tel" id="phone" placeholder="" autocomplete="tel">
                 <span class="field-error" id="err-phone"></span>
               </div>
             </div>
@@ -2127,7 +2571,7 @@
             </div>
             <div class="form-group">
               <label for="city">Your City</label>
-              <input type="text" id="city" placeholder="Mumbai, Delhi, Bangalore…">
+              <input type="text" id="city" placeholder="Dubai, Seattle, London...">
             </div>
             <div class="form-nav">
               <span></span>
@@ -2162,13 +2606,12 @@
               </div>
             </div>
             <div class="form-group">
-              <label for="budget">Budget Range</label>
+              <label for="budget">Choose Your Package</label>
               <select id="budget">
-                <option value="" disabled selected>Select approximate budget</option>
-                <option>Under ₹5,000</option>
-                <option>₹5,000 – ₹15,000</option>
-                <option>₹15,000 – ₹30,000</option>
-                <option>₹30,000+</option>
+                <option value="" disabled selected>Choose Your Package</option>
+                <option>The Intimate</option>
+                <option>The Grand</option>
+                <option>The Elite</option>
                 <option>Let's discuss</option>
               </select>
             </div>
@@ -2270,7 +2713,13 @@
     </div>
   </footer>
 
-
+  <!-- WhatsApp Float Button -->
+  <!-- <a href="https://wa.me/91XXXXXXXXXX" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+      <path
+        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+    </svg>
+  </a> -->
 
   <!-- EmailJS SDK -->
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
@@ -2283,6 +2732,19 @@
     const EMAILJS_TEMPLATE_OWNER = "template_tgcc71u";
 
     emailjs.init(EMAILJS_PUBLIC_KEY);
+
+    // ── VIDEO OVERLAY ──
+    function playVideo(overlay) {
+      const video = overlay.previousElementSibling;
+      overlay.classList.add('hidden');
+      video.play();
+    }
+    document.querySelectorAll('.sample-video-wrap video').forEach(video => {
+      video.addEventListener('pause', () => {
+        const overlay = video.nextElementSibling;
+        if (overlay) overlay.classList.remove('hidden');
+      });
+    });
 
     // ── STICKY NAV ──
     window.addEventListener('scroll', () => {
@@ -2429,6 +2891,50 @@
       document.getElementById('submitBtn').disabled = false;
       currentStep = 1;
     }
+
+    // Premium hover lighting and desktop cursor polish
+    const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+    if (canHover) {
+      const cursor = document.createElement('div');
+      cursor.className = 'premium-cursor';
+      document.body.appendChild(cursor);
+
+      let mouseX = window.innerWidth / 2;
+      let mouseY = window.innerHeight / 2;
+      let cursorX = mouseX;
+      let cursorY = mouseY;
+
+      window.addEventListener('pointermove', (event) => {
+        mouseX = event.clientX;
+        mouseY = event.clientY;
+        document.body.style.setProperty('--spot-x', `${event.clientX}px`);
+        document.body.style.setProperty('--spot-y', `${event.clientY}px`);
+        cursor.style.opacity = '1';
+      });
+
+      function renderCursor() {
+        cursorX += (mouseX - cursorX) * 0.18;
+        cursorY += (mouseY - cursorY) * 0.18;
+        cursor.style.left = `${cursorX}px`;
+        cursor.style.top = `${cursorY}px`;
+        requestAnimationFrame(renderCursor);
+      }
+      renderCursor();
+
+      document.querySelectorAll('a, button, .use-card, .price-card, .testi-card, .sample-card, .form-card').forEach(el => {
+        el.addEventListener('pointerenter', () => cursor.classList.add('is-hovering'));
+        el.addEventListener('pointerleave', () => cursor.classList.remove('is-hovering'));
+      });
+    }
+
+    document.querySelectorAll('.use-card, .price-card, .testi-card, .sample-card, .form-card').forEach(card => {
+      card.addEventListener('pointermove', (event) => {
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty('--card-x', `${event.clientX - rect.left}px`);
+        card.style.setProperty('--card-y', `${event.clientY - rect.top}px`);
+      });
+    });
   </script>
 
 </body>
