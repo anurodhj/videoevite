@@ -254,14 +254,11 @@
         }
 
         .video-label {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            background: rgba(10, 9, 6, 0.85);
-            backdrop-filter: blur(8px);
+            background: var(--warm-800);
             border: 1px solid var(--warm-700);
             padding: 10px 16px;
             border-radius: 2px;
+            margin-top: 10px;
         }
 
         .video-label .vl-name {
@@ -801,8 +798,15 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* ─── Responsive ─── */
@@ -914,7 +918,8 @@
                     an <em>unforgettable welcome</em>
                 </h1>
                 <p class="hero-sub">
-                    A personalized video from the Chancellor or President — addressed to the student by name, sharing the campus experience, and building an emotional connection that drives enrollment.
+                    A personalized video from the Chancellor or President — addressed to the student by name, sharing
+                    the campus experience, and building an emotional connection that drives enrollment.
                 </p>
                 <div class="hero-actions">
                     <a href="#cta" class="btn-primary">Book an Admissions Demo</a>
@@ -924,30 +929,33 @@
 
             <div class="carousel-container" id="video" style="max-width: 440px; margin: 0 auto;">
                 <button id="prevBtn" class="carousel-arrow" aria-label="Previous Video">&#8592;</button>
-                
+
                 <div class="video-carousel">
                     <!-- Video 1 -->
                     <div class="video-slide active">
-                        <div class="hero-video-wrap" style="width: 100%; max-width: 320px; aspect-ratio: 9/16; margin: 0 auto; box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6), 0 0 0 1px var(--warm-700);">
+                        <div class="hero-video-wrap"
+                            style="width: 100%; max-width: 320px; aspect-ratio: 9/16; margin: 0 auto; box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6), 0 0 0 1px var(--warm-700);">
                             <video controls playsinline preload="metadata">
                                 <source src="assets/college.mp4#t=0.001" type="video/mp4" />
                             </video>
-                            <div class="video-label" style="bottom: 12px; left: 12px; padding: 8px 12px;">
-                                <div class="vl-name" style="font-size: 0.9rem;">UW-Milwaukee</div>
-                                <div class="vl-sub" style="font-size: 0.6rem;">Chancellor T. Gibson</div>
-                            </div>
+                        </div>
+                        <div class="video-label" style="max-width: 320px; margin: 10px auto 0;">
+                            <div class="vl-name" style="font-size: 0.9rem;">UW-Milwaukee</div>
+                            <div class="vl-sub" style="font-size: 0.6rem;">Chancellor T. Gibson</div>
                         </div>
                     </div>
                     <!-- Video 2 -->
                     <div class="video-slide">
-                        <div class="hero-video-wrap" style="width: 100%; max-width: 320px; aspect-ratio: 9/16; margin: 0 auto; box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6), 0 0 0 1px var(--warm-700);">
+                        <div class="hero-video-wrap"
+                            style="width: 100%; max-width: 320px; aspect-ratio: 9/16; margin: 0 auto; box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6), 0 0 0 1px var(--warm-700);">
                             <video controls playsinline preload="metadata">
-                                <source src="https://anurodhj.github.io/vids/assets/roche.mp4#t=0.001" type="video/mp4" />
+                                <source src="https://anurodhj.github.io/vids/assets/roche.mp4#t=0.001"
+                                    type="video/mp4" />
                             </video>
-                            <div class="video-label" style="bottom: 12px; left: 12px; padding: 8px 12px;">
-                                <div class="vl-name" style="font-size: 0.9rem;">University of Rochester</div>
-                                <div class="vl-sub" style="font-size: 0.6rem;">President's Message</div>
-                            </div>
+                        </div>
+                        <div class="video-label" style="max-width: 320px; margin: 10px auto 0;">
+                            <div class="vl-name" style="font-size: 0.9rem;">University of Rochester</div>
+                            <div class="vl-sub" style="font-size: 0.6rem;">President's Message</div>
                         </div>
                     </div>
                 </div>
@@ -975,12 +983,12 @@
                         if (video) video.pause();
                     }
                 });
-                
+
                 prevBtn.disabled = currentIndex === 0;
                 nextBtn.disabled = currentIndex === slides.length - 1;
             }
 
-            if(prevBtn && nextBtn) {
+            if (prevBtn && nextBtn) {
                 prevBtn.addEventListener('click', () => {
                     if (currentIndex > 0) {
                         currentIndex -= 1;
@@ -994,7 +1002,7 @@
                         updateCarousel();
                     }
                 });
-                
+
                 // Initialize state
                 updateCarousel();
             }
@@ -1031,14 +1039,17 @@
                 Acceptance packages that<br><em>lack emotional impact</em>
             </h2>
             <p class="section-body">
-                Admissions offices work tirelessly to admit the perfect class, but the final acceptance letter or email often feels administrative and fails to truly capture the prestige and excitement of the university.
+                Admissions offices work tirelessly to admit the perfect class, but the final acceptance letter or email
+                often feels administrative and fails to truly capture the prestige and excitement of the university.
             </p>
 
             <div class="two-col">
                 <div class="challenge-card">
                     <span class="card-tag tag-problem">Before VideoEvite</span>
                     <div class="card-title">The standard acceptance</div>
-                    <p class="card-body">Students receive a standardized email or a static printed letter. It's informative but lacks the personal touch required to sway top-tier applicants considering multiple offers.
+                    <p class="card-body">Students receive a standardized email or a static printed letter. It's
+                        informative but lacks the personal touch required to sway top-tier applicants considering
+                        multiple offers.
                     </p>
                     <ul class="pain-list">
                         <li>Acceptance emails look identical across universities</li>
@@ -1050,7 +1061,8 @@
                 <div class="solution-card">
                     <span class="card-tag tag-solution">With VideoEvite</span>
                     <div class="card-title">A deeply personal welcome</div>
-                    <p class="card-body">The student opens an email to find a highly produced video where the university leadership explicitly says their name, welcoming them to their specific intended major.</p>
+                    <p class="card-body">The student opens an email to find a highly produced video where the university
+                        leadership explicitly says their name, welcoming them to their specific intended major.</p>
                     <ul class="pain-list">
                         <li>Incredible emotional impact that drives deposits</li>
                         <li>Students eagerly share their personalized video on social media</li>
@@ -1069,20 +1081,25 @@
             <h2 class="section-headline">
                 Enterprise scale.<br><em>Individualized</em> impact.
             </h2>
-            <p class="section-body">Our API integrates directly with your existing CRM (like Slate or Salesforce) to automate the entire process without adding overhead to your team.</p>
+            <p class="section-body">Our API integrates directly with your existing CRM (like Slate or Salesforce) to
+                automate the entire process without adding overhead to your team.</p>
 
             <div class="steps-grid">
                 <div class="step-card" data-n="1">
                     <div class="step-title">Connect your CRM</div>
-                    <p class="step-body">Integrate securely with your admissions platform. When a student's status changes to "Admitted", a trigger securely passes their first name, major, and email to our system.</p>
+                    <p class="step-body">Integrate securely with your admissions platform. When a student's status
+                        changes to "Admitted", a trigger securely passes their first name, major, and email to our
+                        system.</p>
                 </div>
                 <div class="step-card" data-n="2">
                     <div class="step-title">Instant video generation</div>
-                    <p class="step-body">Our engine seamlessly weaves the student's name and intended major into your pre-recorded institutional messaging, rendering a cinematic 60-second video.</p>
+                    <p class="step-body">Our engine seamlessly weaves the student's name and intended major into your
+                        pre-recorded institutional messaging, rendering a cinematic 60-second video.</p>
                 </div>
                 <div class="step-card" data-n="3">
                     <div class="step-title">Automated delivery</div>
-                    <p class="step-body">The personalized video link is automatically dispatched via email or SMS. Students experience the thrill of a personal welcome the moment they are admitted.</p>
+                    <p class="step-body">The personalized video link is automatically dispatched via email or SMS.
+                        Students experience the thrill of a personal welcome the moment they are admitted.</p>
                 </div>
             </div>
         </div>
@@ -1100,17 +1117,20 @@
                 <div class="result-item">
                     <span class="result-num">+18%</span>
                     <span class="result-label">Yield Rate Increase</span>
-                    <p class="result-detail">Universities see a measurable jump in deposits when students feel personally recognized and valued by the institution.</p>
+                    <p class="result-detail">Universities see a measurable jump in deposits when students feel
+                        personally recognized and valued by the institution.</p>
                 </div>
                 <div class="result-item">
                     <span class="result-num">2.5×</span>
                     <span class="result-label">Social Media Mentions</span>
-                    <p class="result-detail">Students are highly motivated to share their personalized acceptance video on Instagram and TikTok, driving massive organic awareness.</p>
+                    <p class="result-detail">Students are highly motivated to share their personalized acceptance video
+                        on Instagram and TikTok, driving massive organic awareness.</p>
                 </div>
                 <div class="result-item">
                     <span class="result-num">-14%</span>
                     <span class="result-label">Summer Melt</span>
-                    <p class="result-detail">Ongoing personalized video touchpoints throughout the summer keep committed students engaged and excited until move-in day.</p>
+                    <p class="result-detail">Ongoing personalized video touchpoints throughout the summer keep committed
+                        students engaged and excited until move-in day.</p>
                 </div>
             </div>
         </div>
@@ -1120,7 +1140,9 @@
     <div class="quote-section">
         <div class="quote-inner">
             <span class="quote-mark">&ldquo;</span>
-            <p class="quote-text">The personalized videos completely changed our admissions cycle. When applicants saw the Chancellor speaking directly to them by name, the emotional response was unprecedented. Our yield rate exceeded all projections.</p>
+            <p class="quote-text">The personalized videos completely changed our admissions cycle. When applicants saw
+                the Chancellor speaking directly to them by name, the emotional response was unprecedented. Our yield
+                rate exceeded all projections.</p>
             <div class="quote-attr">
                 <div class="quote-avatar">M</div>
                 <div>
@@ -1136,28 +1158,33 @@
         <div class="section-inner">
             <div class="section-eyebrow">Beyond Acceptances</div>
             <h2 class="section-headline">Elevate the entire<br><em>student lifecycle</em></h2>
-            <p class="section-body">Personalized video isn't just for admissions. Use our platform to drive engagement at every critical touchpoint.</p>
+            <p class="section-body">Personalized video isn't just for admissions. Use our platform to drive engagement
+                at every critical touchpoint.</p>
 
             <div class="use-cases-grid">
                 <div class="use-case-card">
                     <span class="use-case-icon">🎓</span>
                     <div class="use-case-title">Admissions & Acceptances</div>
-                    <p class="use-case-body">Welcome admitted students with a video tailored to their name and intended academic program.</p>
+                    <p class="use-case-body">Welcome admitted students with a video tailored to their name and intended
+                        academic program.</p>
                 </div>
                 <div class="use-case-card">
                     <span class="use-case-icon">💰</span>
                     <div class="use-case-title">Financial Aid Offers</div>
-                    <p class="use-case-body">Demystify financial aid packages with a personalized video that walks the student through their specific grants and scholarships.</p>
+                    <p class="use-case-body">Demystify financial aid packages with a personalized video that walks the
+                        student through their specific grants and scholarships.</p>
                 </div>
                 <div class="use-case-card">
                     <span class="use-case-icon">🏛️</span>
                     <div class="use-case-title">Orientation & Move-in</div>
-                    <p class="use-case-body">Send personalized logistical instructions, dormitory assignments, and roommate introductions directly to their inbox.</p>
+                    <p class="use-case-body">Send personalized logistical instructions, dormitory assignments, and
+                        roommate introductions directly to their inbox.</p>
                 </div>
                 <div class="use-case-card">
                     <span class="use-case-icon">🤝</span>
                     <div class="use-case-title">Alumni Engagement & Giving</div>
-                    <p class="use-case-body">Thank alumni donors by name, showing them exactly how their specific contribution is impacting the campus today.</p>
+                    <p class="use-case-body">Thank alumni donors by name, showing them exactly how their specific
+                        contribution is impacting the campus today.</p>
                 </div>
             </div>
         </div>
@@ -1171,13 +1198,15 @@
                 See a personalized acceptance<br>for <em>your</em> university
             </h2>
             <p class="cta-sub">
-                Let us render a sample video using your university's branding. Experience firsthand the impact of a truly personalized welcome.
+                Let us render a sample video using your university's branding. Experience firsthand the impact of a
+                truly personalized welcome.
             </p>
             <div class="cta-actions">
                 <a href="https://videoevite.com/#order" class="btn-primary">Request a Free Sample</a>
                 <a href="mailto:contact@videoevite.com" class="btn-ghost">Contact Sales</a>
             </div>
-            <p class="cta-note">Seamless CRM integrations available &nbsp;·&nbsp; SOC2 Compliant &nbsp;·&nbsp; Full API access</p>
+            <p class="cta-note">Seamless CRM integrations available &nbsp;·&nbsp; SOC2 Compliant &nbsp;·&nbsp; Full API
+                access</p>
         </div>
     </section>
 
