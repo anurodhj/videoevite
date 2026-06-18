@@ -1759,16 +1759,18 @@
     }
 
     nav {
-      left: 50%;
-      right: auto;
-      top: 1rem;
-      width: min(1180px, calc(100% - 2rem));
-      border: 1px solid rgba(201, 168, 76, 0.14);
-      border-radius: 999px;
-      background: rgba(13, 12, 10, 0.64);
-      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.22);
+      left: 0;
+      right: 0;
+      top: 0;
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+      border-radius: 0;
+      background: rgba(13, 12, 10, 0.72);
+      box-shadow: none;
       backdrop-filter: blur(22px);
-      transform: translateX(-50%);
+      transform: none;
+      padding: 1.4rem 5rem;
     }
 
     nav.scrolled {
@@ -2088,10 +2090,9 @@
   <nav id="mainNav">
     <a href="#" class="logo">Video<span>Evite</span></a>
     <ul class="nav-links">
-      <li><a href="#how">How It Works</a></li>
-      <li><a href="#occasions">Occasions</a></li>
-      <li><a href="#pricing">Pricing</a></li>
-      <li><a href="#samples">Samples</a></li>
+      <li><a href="https://videoevite.com/wedding1.html">Weddings</a></li>
+      <li><a href="https://videoevite.com/hotel.html">Hotels</a></li>
+      <li><a href="https://videoevite.com/clg.html">College Admissions</a></li>
     </ul>
     <a href="#order" class="nav-cta">Order Now</a>
   </nav>
@@ -2293,7 +2294,8 @@
     </div>
 
     <div class="cards-scroll">
-      <div class="use-card fade-up">
+      <a href="https://videoevite.com/wedding1.html" class="use-card fade-up"
+        style="text-decoration:none;color:inherit;display:block;cursor:pointer;">
         <span class="use-icon">💍</span>
         <span class="use-num">01 / 04</span>
         <h3>Wedding Invitations</h3>
@@ -2305,9 +2307,10 @@
           <li>Date, venue, dress code</li>
           <li>RSVP link embedded</li>
         </ul>
-      </div>
+      </a>
 
-      <div class="use-card fade-up">
+      <a href="https://videoevite.com/hotel.html" class="use-card fade-up"
+        style="text-decoration:none;color:inherit;display:block;cursor:pointer;">
         <span class="use-icon">🏨</span>
         <span class="use-num">02 / 04</span>
         <h3>Luxury Hotel Welcome</h3>
@@ -2319,9 +2322,10 @@
           <li>Concierge introduction</li>
           <li>Upsell in elegance</li>
         </ul>
-      </div>
+      </a>
 
-      <div class="use-card fade-up">
+      <a href="https://videoevite.com/clg.html" class="use-card fade-up"
+        style="text-decoration:none;color:inherit;display:block;cursor:pointer;">
         <span class="use-icon">🎓</span>
         <span class="use-num">03 / 04</span>
         <h3>College Admissions</h3>
@@ -2333,7 +2337,7 @@
           <li>Campus preview</li>
           <li>Orientation details</li>
         </ul>
-      </div>
+      </a>
 
       <div class="use-card fade-up">
         <span class="use-icon">🎊</span>
